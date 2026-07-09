@@ -1,3 +1,5 @@
+# Exercise 2: Deploy a Virtual Machine and Validate Secure Storage Access
+
 ### Part 5 - Virtual machine and Bastion
 
 In this part we are going to add a Virtual Machine to our Terraform configuration by leveraging the Azure Verified Module for Virtual Machine. The Virtual Machine is going to be used to interact with the Storage Account later. We are also going to add a role assignment to the storage module to assign permissions to the managed identity of the virtual machine to the storage container.
