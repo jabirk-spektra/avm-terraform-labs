@@ -14,22 +14,90 @@
 
 The instructions for this sample are in the form of a Lab. Follow along with them to get up and running.
 
-## Demo / Lab
+## Task 1: Prepare the Terraform Development Environment
 
-### Part 0 - Get the lab files and login to Azure
+In this task, you will prepare the local development environment required for Terraform deployments in Visual Studio Code, install the required extensions, and verify that Terraform is installed.
+
+1. Open **Visual Studio Code** on your Lab-VM.
+
+   ![](../../images/vs.png)
+
+1. Once the IDE opens, if you see the ***Welcome to VS Code*** sign-in pop-up for GitHub, simply close the window by clicking the **X** in the upper-right corner.
+
+   ![](../../images/vsc-welcome-window-close.png)
+
+1. In VS Code, ensure that the following extensions are installed:
+   
+   - [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) — syntax highlighting, validation, and IntelliSense for `.tf` files.
+  
+   ![](../../images/vsc-terraform-lab-hashicorp-ext.png)
+
+1. From the **File** menu in VS Code, choose **Open Folder**.
+
+   ![](../../images/vsc-open-folder.png)
+
+1. Navigate to `C:\Users\azureuser`, select the **TerraformLabs** folder and then click **Select folder**.
+
+   ![](../../images/vsc-select-folder-terraformlabs-01.png)
+
+1. Now you will see another screen Do you trust the authors of the files in this folder?. Select the **checkbox (1)** *Trust the authors of all files in the parent folder 'azureuser'* and then click **Yes, I trust the authors (2)**.
+
+   ![](../../images/vsc-trust-folder-terraformlabs-01.png)
+
+1. Open the integrated terminal by selecting **Terminal → New Terminal**.
+
+   ![](../../images/vsc-terraform-lab-new-terminal.png)
+
+1. In the integrated terminal, verify that Terraform is installed by running the following command:
+
+   ```bash
+   terraform version
+   ```
+
+   This command displays the currently installed Terraform CLI version. You should see **Terraform version 1.9.x** or later installed in the environment.
+
+   ![](../../images/vsc-terraform-version-01.png)
+
+---
+
+## Task 2 - Get the lab files and login to Azure
 
 In this part we are going to get a local copy of the lab files for use in the rest of the lab.
 
-1. Create a new root folder for the lab in a location of your choice.
-1. Open a terminal and navigate to the new folder.
+1. Create a new root folder for the lab under `C:\Users\azureuser`.
+
+   * Right click and select **New (1)**, and click on **Folder (2)**. 
+
+     ![](../../images/lf-01.png)
+
+   * Give the name as **my-lab-folder**.
+
+     ![](../../images/lf-02.png)
+
+1. Open a terminal and navigate to the newly created folder at `C:\Users\azureuser\my-lab-folder`.
+
+   ![](../../images/vsc-terraform-lab-new-terminal.png)
+
+1. Use the following command to navigate to the folder: 
+
+     ```pwsh
+     cd C:\Users\azureuser\my-lab-folder
+     ```   
+
+   ![](../../images/lf-04.png)
+
 1. Run `git clone https://github.com/Azure-Samples/avm-terraform-labs` to clone the lab files into the new folder, they will be in a subfolder called `avm-terraform-labs`.
 
       ```pwsh
       git clone https://github.com/Azure-Samples/avm-terraform-labs
       mkdir avm-lab
       ```
+   ![](../../images/lf-05.png)
 
-      Your file structure should now look like this:
+
+      Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
+
+      ![](../../images/lf-06.png)
 
       ```plaintext
       📂my-lab-folder
@@ -42,6 +110,8 @@ In this part we are going to get a local copy of the lab files for use in the re
       ```pwsh
       code .
       ```
+   ![](../../images/lf-07.png)
+
 
 1. Open the VSCode Terminal and navigate to the `avm-lab` folder.
 
@@ -49,10 +119,39 @@ In this part we are going to get a local copy of the lab files for use in the re
       cd avm-lab
       ```
 
-1. Run `az login` to login to your Azure subscription.
-1. Run `az account show` to show the current subscription. Run `az account set --subscription <subscription-id>` to set the subscription if it is not the one you want to use.
+   ![](../../images/lf-08.png)
 
-### Part 1 - Base files and resources
+1. Sign in to Azure from the integrated terminal:
+
+   ```
+   az login
+   ```
+
+1. On the *Let’s get you signed in pop-up*, select **Work or school account**, then click **Continue**. You may need to minimize any open applications to bring this window into view.
+
+   ![](../../images/az-select-work-or-school-account.png)
+
+1. You'll see the Sign into Microsoft Azure tab. Here, enter your credentials:
+
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+  
+     ![](../../images/az-enter-username.png)
+  
+1. Next, enter the Temporary Access Pass:
+
+   - **Temporary Access Pass:** <inject key="AzureAdUserPassword"></inject>
+  
+     ![](../../images/az-enter-tap.png)
+
+1. On the *Sign in to all apps, websites, and services on this device?*, click **No, this app only**.
+
+   ![](../../images/az-no-this-app-only.png)
+
+1. You are now signed in to the Azure portal from your Visual Studio Code terminal. In Visual Studio Code integrated terminal, when prompted to select a subscription and tenant, press **Enter** to accept the default selection.
+
+   ![](../../images/lf-09.png)
+
+## Task 3 - Base files and resources
 
 In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm-res-log-analytics-workspace` module.
 
@@ -63,6 +162,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       ```pwsh
       copy ../avm-terraform-labs/labs/part01-base/* .
       ```
+   ![](../../images/lf-10.png)
 
       Your file structure should look like this:
 
@@ -78,23 +178,63 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       ┃ ┗ 📜variables.tf
       ┗ 📂avm-terraform-labs
       ```
+   Expand the **my-lab-folder** directory by clicking the dropdown arrow next to it to view the **Terraform** files.
+
+   ![](../../images/lf-11.png)
 
 1. Examine the `terraform` block in `terraform.tf` and note that we are referencing the `azurerm` and `random` providers.
-1. Examine the `locals.tf`, `variables.tf`, `outputs.tf` and `main.tf` files.
+
+   ![](../../images/lf-12.png)
+
+1. Examine the files below: 
+
+   * `locals.tf`
+
+     ![](../../images/locals.png)
+
+   * `variables.tf` 
+   
+     ![](../../images/variable.png)
+
+   * `outputs.tf`
+
+     ![](../../images/output.png)
+
+   * `main.tf`
+
+     ![](../../images/main.png)
+
 1. Examine the `avm.log_analytics_workspace.tf` file and note the `source` and `version` properties.
+
+   ![](../../images/avm.png)
+
 1. Create an environment variable to set the location variable:
 
       ```pwsh
       $env:TF_VAR_location = "<azure region>"
       ```
 
-      Replace `<azure region>` with a valid Azure location of your choice (e.g. swedencentral).
+      Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,eastus2,centralus,canadaeast,westus,westus3).
 
       ```pwsh
-      $env:TF_VAR_location = "swedencentral"
+      $env:TF_VAR_location = "eastus"
       ```
 
-1. Create a file called `terraform.tfvars` and add the following code to it:
+   ![](../../images/tf-01.png)   
+
+1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
+
+   ![](../../images/tf-02.png)
+
+1. In the Search bar, give the name as **terraform.tfvars**.
+
+   ![](../../images/tf-03.png)
+
+1. In the pop-up, make sure the name is **terraform**, and click **Create File**.
+
+   ![](../../images/tf-04.png)
+
+1. After the file is created, add the following code to it:
 
       ```hcl
       tags = {
@@ -103,40 +243,85 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       }
       ```
 
-1. Run `terraform init` to initialize the Terraform configuration.
-1. Run `terraform plan -out tfplan` to see what resources will be created and create a plan file.
-1. Run `terraform apply tfplan` to create the resources based on the plan file.
+   ![](../../images/tf-05.png)
+
+1. Run the following command to initialize the Terraform configuration.
+
+   ```
+   terraform init
+   ```
+
+   ![](../../images/tf-06.png)
+
+1. Run the following command to preview the resources that will be created and generate a Terraform plan file.
+
+   ```
+   terraform plan -out tfplan
+   ```
+
+   ![](../../images/tf-07.png)   
+
+1. Run the following command to create the resources based on the generated Terraform plan file.
+
+   ```
+   terraform apply tfplan
+   ```
+
+   ![](../../images/tf-08.png)
+
+
 1. If your run is successful, you will see:
 
       ```plaintext
       Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
       ```
+   
+   ![](../../images/tf-09.png)
 
 1. Take note of the outputs from the `terraform apply` command, they should look like this:
 
-      ```plaintext
-      Outputs:
+   ![](../../images/tf-10.png)
 
-      resource_ids = {
-        "log_analytics_workspace" = "/subscriptions/b857908d-3f5c-4477-91c1-0fbd08df4e88/resourceGroups/rg-demo-dev-swedencentral-001/providers/Microsoft.OperationalInsights/workspaces/law-demo-dev-swedencentral-001"
-        "resource_group" = "/subscriptions/b857908d-3f5c-4477-91c1-0fbd08df4e88/resourceGroups/rg-demo-dev-swedencentral-001"
-      }
-      resource_names = {
-        "log_analytics_workspace_name" = "law-demo-dev-swedencentral-001"
-        "resource_group_name" = "rg-demo-dev-swedencentral-001"
-      }
-      ```
+1. Navigate to the Azure portal. In the search bar, type **Log Analytics workspace (1)**, and then select **Log Analytics workspaces (2)** from the search results.
 
-1. Navigate to the Azure Portal and review the resources that have been created.
-1. Run `git init -b main` to initialize a new git repository.
-1. Run `git add .` to stage the files.
-1. Run `git commit -m "Initial commit"` to commit the files.
-1. If you are prompted to set up a git Author identity, follow the instructions and then re-run the `git commit` command.
+   ![](../../images/lw-01.png)
+
+1. Click on the newly created **Log Analytics workspace** resource.
+
+   ![](../../images/lw-02.png)
+
+1. Run the following command to initialize a new Git repository with the default branch set to main.
+
+   ```
+   git init -b main
+   ```
+
+   ![](../../images/git-01.png)
+
+1. Run the following command to stage all the files for commit.
+
+   ```
+   git add .
+   ```
+
+   ![](../../images/git-02.png)
+
+1. Run the following command to commit the staged files to the Git repository.
+
+   ```
+   git commit -m "Initial commit"
+   ```
+
+   ![](../../images/git-03.png)
+
+1. If you are prompted to set up a Git Author identity, follow the instructions and then re-run the `git commit` command.
 
     ```pwsh
-    git config --global user.email "first.last@domain.com"
-    git config --global user.name "First Last"
+    git config --global user.email <inject key="GitHub User Name" enableCopy="true"/>
+    git config --global user.name odl-user-<inject key="DeploymentID" enableCopy="false"/>
     ```
+
+   ![](../../images/git-04.png)
 
 ### Part 2 - Virtual network and subnets
 
