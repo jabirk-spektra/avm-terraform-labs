@@ -5,7 +5,7 @@
     "BaseURL": "https://github.com/CloudLabsAI-Azure/avm-terraform-labs",
     "Files": [
       {
-        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Microsoft-Fabric-and-Foundry-IQ-v2/refs/heads/main/Lab/Lab%202-%20Building%20Foundry%20IQ/Gettingstarted.md",
+        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/avm-terraform-labs/refs/heads/main/labs/Gettingstarted.md",
         "Order": 1
       },
       {
