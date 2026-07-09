@@ -92,7 +92,7 @@ In this part we are going to get a local copy of the lab files for use in the re
       git clone https://github.com/Azure-Samples/avm-terraform-labs
       mkdir avm-lab
       ```
-   ![](../../images/lf-05.png)
+      ![](../../images/lf-05.png)
 
 
       Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
@@ -110,7 +110,7 @@ In this part we are going to get a local copy of the lab files for use in the re
       ```pwsh
       code .
       ```
-   ![](../../images/lf-07.png)
+      ![](../../images/lf-07.png)
 
 
 1. Open the VSCode Terminal and navigate to the `avm-lab` folder.
@@ -119,7 +119,7 @@ In this part we are going to get a local copy of the lab files for use in the re
       cd avm-lab
       ```
 
-   ![](../../images/lf-08.png)
+      ![](../../images/lf-08.png)
 
 1. Sign in to Azure from the integrated terminal:
 
@@ -162,7 +162,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       ```pwsh
       copy ../avm-terraform-labs/labs/part01-base/* .
       ```
-   ![](../../images/lf-10.png)
+      ![](../../images/lf-10.png)
 
       Your file structure should look like this:
 
@@ -220,7 +220,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       $env:TF_VAR_location = "eastus"
       ```
 
-   ![](../../images/tf-01.png)   
+      ![](../../images/tf-01.png)   
 
 1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
 
@@ -243,7 +243,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       }
       ```
 
-   ![](../../images/tf-05.png)
+      ![](../../images/tf-05.png)
 
 1. Run the following command to initialize the Terraform configuration.
 
@@ -269,12 +269,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/tf-08.png)
 
-
 1. If your run is successful, you will see:
-
-      ```plaintext
-      Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
-      ```
    
    ![](../../images/tf-09.png)
 
@@ -318,10 +313,10 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
     ```pwsh
     git config --global user.email <inject key="GitHub User Name" enableCopy="true"/>
-    git config --global user.name odl-user-<inject key="DeploymentID" enableCopy="false"/>
+    git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
     ```
 
-   ![](../../images/git-04.png)
+    ![](../../images/git-04.png)
 
 ### Part 2 - Virtual network and subnets
 
