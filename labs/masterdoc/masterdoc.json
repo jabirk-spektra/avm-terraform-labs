@@ -8,22 +8,6 @@
         "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/avm-terraform-labs/refs/heads/main/labs/Gettingstarted.md",
         "Order": 1
       },
-      {
-        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Microsoft-Fabric-and-Foundry-IQ-v2/refs/heads/main/Lab/Lab%202-%20Building%20Foundry%20IQ/Exercise%202%20-%20Foundry%20IQ%20Knowledge%20Integration/Exercise2-Foundry%20IQ%20Knowledge%20Integration.md",
-        "Order": 2
-      },
-      {
-        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Microsoft-Fabric-and-Foundry-IQ-v2/refs/heads/main/Lab/Lab%202-%20Building%20Foundry%20IQ/Exercise%203%20-%20Build%20an%20Intelligent%20Agent/Exercise3-Build%20an%20Intelligent%20Agent.md",
-        "Order": 3
-      },
-      {
-        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Microsoft-Fabric-and-Foundry-IQ-v2/refs/heads/main/Lab/Lab%202-%20Building%20Foundry%20IQ/Exercise%204%20-%20Multi-Agent%20Orchestration%20and%20Validation/Exercise4-Multi-Agent%20Orchestration%20and%20Validation.md",
-        "Order": 4
-      },
-      {
-        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Microsoft-Fabric-and-Foundry-IQ-v2/refs/heads/main/Lab/Lab%202-%20Building%20Foundry%20IQ/Exercise%205%20-%20Observability%2C%20Evaluation%20%26%20Guardrails/Exercise5-Observability%2C%20Evaluation%20%26%20Guardrails.md",
-        "Order": 5
-      }
     ]
   }
 ]
