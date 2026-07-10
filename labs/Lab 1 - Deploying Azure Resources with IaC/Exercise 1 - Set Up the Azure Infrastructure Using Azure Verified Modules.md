@@ -95,9 +95,9 @@ In this part we are going to get a local copy of the lab files for use in the re
       ![](../../images/lf-05.png)
 
 
-      Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
+   Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
 
-      ![](../../images/lf-06.png)
+   ![](../../images/lf-06.png)
 
       ```plaintext
       📂my-lab-folder
@@ -111,7 +111,6 @@ In this part we are going to get a local copy of the lab files for use in the re
       code .
       ```
       ![](../../images/lf-07.png)
-
 
 1. Open a a new terminal.
 
@@ -238,7 +237,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/tf-04.png)
 
-1. After the file is created, add the following code to it:
+1. After the file is created, add the following code to it, and save the file `Ctrl + S`.
 
       ```hcl
       tags = {
@@ -254,6 +253,8 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform init
    ```
+   
+   You should see: `Terraform has been successfully initialized!`
 
    ![](../../images/tf-06.png)
 
@@ -273,8 +274,12 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/tf-08.png)
 
-1. If your run is successful, you will see:
-   
+   Expected output:
+
+   ```
+   Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+   ```
+
    ![](../../images/tf-09.png)
 
 1. Take note of the outputs from the `terraform apply` command, they should look like this:
@@ -408,6 +413,8 @@ In this part we are going to add a virtual network and subnets to our Terraform 
    terraform init
    ```
 
+   You should see: `Terraform has been successfully initialized!`
+
    ![](../../images/tf-11.png)
 
 1. Navigate to the **Source Control** tab in Visual Studio Code and review the changes to the files.
@@ -482,6 +489,8 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    terraform init
    ```
 
+   You should see: `Terraform has been successfully initialized!`
+
    ![](../../images/kv-02.png)
 
 1. Open the **avm.key_vault.tf (1)** file and look at each of the properties, paying close attention to the **private_endpoints (2)** and **role_assignments (3)** variables.
@@ -494,7 +503,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    terraform apply -auto-approve
    ```
 
-   ![](../../images/kv-03.png)
+   ![](../../images/kv-07.png)
 
 1. Navigate back to the Azure portal. In the search bar, type **Key vault (1)**, and then select **Key vaults (2)** from the search results to view the newly created resource.
 
@@ -523,10 +532,72 @@ In this part we are going to add a Storage Account to our Terraform configuratio
       copy ../avm-terraform-labs/labs/part04-storage-account/* .
       ```
 
-1. Run `terraform init` to install the AVM module for Storage Account.
-1. Navigate to the `Source Control` tab in Visual Studio Code and review the changes to the files.
-1. Open the `avm.storage-account.tf` file and look at each of the properties, paying close attention to the `managed_identities`, `customer_managed_key` and `containers` variables.
+      ![](../../images/sa-01.png)
+
+1. Run to install the AVM module for Storage Account.
+
+   ```
+   terraform init
+   ```
+
+   You should see: `Terraform has been successfully initialized!`
+
+   ![](../../images/kv-02.png)
+
+1. Navigate to the **Source Control (1)** tab in Visual Studio Code and review the **changes (2)** to the files.
+
+   ![](../../images/sa-02.png)
+
+1. Open the **avm.storage-account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
+
+   ![](../../images/sa-03.png)
+
 1. Note in the source control diff that we are adding a key to the Key Vault using the AVM module and assigning permissions for the user assigned managed identity to access the key.
-1. Apply the changes with Terraform: `terraform apply -auto-approve`.
-1. Review the deployed resources in the Azure Portal.
-1. Commit the changes to git: `git add . && git commit -m "Add storage account"`.
+
+1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
+   
+   ```
+   terraform apply -auto-approve
+   ```
+
+   Expected output:
+
+   ```
+   Apply complete! Resources: 21 added, 2 changed, 0 destroyed.
+   ```
+
+   ![](../../images/sa-04.png)
+
+1. Navigate to the Azure portal. In the global search bar, type **Storage accounts (1)**, and then select **Storage accounts (2)** from the search results.
+
+   ![](../../images/sa-05.png)
+
+1. Select the **Storage account (1)** created by the Terraform deployment, and review its **details (2)**.
+
+   ![](../../images/sa-06.png)
+
+1. Commit the changes to git:
+
+   ```
+   git add .  
+   git commit -m "Add storage account"
+   ```
+
+   ![](../../images/sa-07.png)
+
+---
+
+## 🧾 Summary
+
+In this lab, you completed the following:
+
+* Cloned the lab repository and configured the local Terraform workspace.
+* Authenticated with Azure and configured the target subscription for the deployment.
+* Initialized the Terraform configuration and deployed the foundational Azure infrastructure using Azure Verified Modules (AVM).
+* Provisioned core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account.
+* Validated the deployed resources in the Azure portal to confirm successful deployment.
+* Tracked infrastructure changes by initializing a Git repository and committing the Terraform configuration after each deployment stage.
+
+You have successfully completed the lab. Click **Next >>** in the lower-right corner to proceed to the next lab.
+
+![](../../images/next-button.png)
