@@ -30,7 +30,7 @@ In this task, you will prepare the local development environment required for Te
    
    - [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) — syntax highlighting, validation, and IntelliSense for `.tf` files.
   
-   ![](../../images/vsc-terraform-lab-hashicorp-ext.png)
+     ![](../../images/vsc-terraform-lab-hashicorp-ext.png)
 
 1. From the **File** menu in VS Code, choose **Open Folder**.
 
@@ -94,10 +94,9 @@ In this part we are going to get a local copy of the lab files for use in the re
       ```
       ![](../../images/lf-05.png)
 
+   - Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
 
-   Your file structure should now look like the following. Run the `ls` command in the terminal to verify that the files are present inside the **my-lab-folder** directory.
-
-   ![](../../images/lf-06.png)
+     ![](../../images/lf-06.png)
 
       ```plaintext
       📂my-lab-folder
@@ -160,14 +159,14 @@ In this part we are going to setup our Terraform root module and deploy an Azure
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 
-1. Copy the files from the [part 1](labs/part01-base/) folder into the `avm-lab` folder.
+1. Copy the files from the **Part 1** folder into the `avm-lab` folder.
 
       ```pwsh
       copy ../avm-terraform-labs/labs/part01-base/* .
       ```
       ![](../../images/lf-10.png)
 
-      Your file structure should look like this:
+   -  Your file structure should look like this:
 
       ```plaintext
       📂my-lab-folder
@@ -181,9 +180,9 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       ┃ ┗ 📜variables.tf
       ┗ 📂avm-terraform-labs
       ```
-   Expand the **my-lab-folder** directory by clicking the dropdown arrow next to it to view the **Terraform** files.
+   -  Expand the **my-lab-folder** directory by clicking the dropdown arrow next to it to view the **Terraform** files.
 
-   ![](../../images/lf-11.png)
+      ![](../../images/lf-11.png)
 
 1. Examine the `terraform` block in `terraform.tf` and note that we are referencing the `azurerm` and `random` providers.
 
@@ -217,7 +216,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       $env:TF_VAR_location = "<azure region>"
       ```
 
-      Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,eastus2,centralus,canadaeast,westus,westus3).
+1. Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,eastus2,centralus,canadaeast,westus,westus3).
 
       ```pwsh
       $env:TF_VAR_location = "eastus"
@@ -254,9 +253,9 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    terraform init
    ```
    
-   You should see: `Terraform has been successfully initialized!`
+   - You should see: `Terraform has been successfully initialized!`
 
-   ![](../../images/tf-06.png)
+     ![](../../images/tf-06.png)
 
 1. Run the following command to preview the resources that will be created and generate a Terraform plan file.
 
@@ -354,7 +353,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/vn-2.png)
 
-      Your file structure should now look like this if you have followed the instructions correctly (this structure will continue to grow as you progress through the lab):
+   -  Your file structure should now look like this if you have followed the instructions correctly (this structure will continue to grow as you progress through the lab):
 
       ```plaintext
       📂my-lab-folder
@@ -413,9 +412,9 @@ In this part we are going to add a virtual network and subnets to our Terraform 
    terraform init
    ```
 
-   You should see: `Terraform has been successfully initialized!`
+   - You should see: `Terraform has been successfully initialized!`
 
-   ![](../../images/tf-11.png)
+     ![](../../images/tf-11.png)
 
 1. Navigate to the **Source Control** tab in Visual Studio Code and review the changes to the files.
 
@@ -475,7 +474,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
-1. Copy the files from the [part 3](labs/part03-keyvault/) folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+1. Copy the files from the **Part 3** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
 
       ```pwsh
       copy ../avm-terraform-labs/labs/part03-key-vault/* .
@@ -489,9 +488,9 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    terraform init
    ```
 
-   You should see: `Terraform has been successfully initialized!`
+   - You should see: `Terraform has been successfully initialized!`
 
-   ![](../../images/kv-02.png)
+     ![](../../images/kv-02.png)
 
 1. Open the **avm.key_vault.tf (1)** file and look at each of the properties, paying close attention to the **private_endpoints (2)** and **role_assignments (3)** variables.
 
@@ -526,7 +525,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
-1. Copy the files from the [part 4](labs/part04-storage-account/) folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+1. Copy the files from the **Part 4** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
 
       ```pwsh
       copy ../avm-terraform-labs/labs/part04-storage-account/* .
@@ -540,9 +539,9 @@ In this part we are going to add a Storage Account to our Terraform configuratio
    terraform init
    ```
 
-   You should see: `Terraform has been successfully initialized!`
+   - You should see: `Terraform has been successfully initialized!`
 
-   ![](../../images/kv-02.png)
+     ![](../../images/kv-02.png)
 
 1. Navigate to the **Source Control (1)** tab in Visual Studio Code and review the **changes (2)** to the files.
 
