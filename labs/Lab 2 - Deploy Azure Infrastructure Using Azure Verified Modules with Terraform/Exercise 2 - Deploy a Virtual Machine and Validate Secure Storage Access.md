@@ -1,52 +1,41 @@
 # Exercise 2: Deploy a Virtual Machine and Validate Secure Storage Access
 
+### Estimated Duration: 30 Minutes
+
+## 📘 Scenario
+
+
+
+## 📖 Overview
+
+
+
+## 🎯 Objectives
+
+You will be able to complete the following tasks:
+
+- Task 1 - Virtual machine and Bastion
+- Task 2 - Connect to the VM via Bastion
+- Task 3 - Install the Azure CLI and login
+- Task 4 - Create a blob in the storage account
+
 ## Task 1 - Virtual machine and Bastion
 
 In this part we are going to add a Virtual Machine to our Terraform configuration by leveraging the Azure Verified Module for Virtual Machine. The Virtual Machine is going to be used to interact with the Storage Account later. We are also going to add a role assignment to the storage module to assign permissions to the managed identity of the virtual machine to the storage container.
 
-1. Navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part05-virtual-machine`.
+1. Copy the files from the **Part 5** folder into the `avm-lab` folder, remembering to retain the existing files and just add an overwrite when prompted.
 
-1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
-
-   ![](../../images/tf-02.png)
-
-1. In the Search bar, give the name as **terraform.tfvars**, and press **Enter**.
-
-   ![](../../images/tf-03.png)
-
-1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\labs\part05-virtual-machine` directory, and then click Create File.
-
-   ![](../../images/tf-04-n3.png)
+      ```pwsh
+      copy ../labs/part05-virtual-machine/* .
+      ```
 
 1. Add the following variables to the **terraform.tfvars (1)** file, and then save the **changes (2)** by pressing `Ctrl + S`.
 
-   ![](../../images/tfvars-01.png)
+   ![](../../images/e1t1s2.png)
 
       >NOTE: You may need to choose a different virtual machine sku depending on availability in your chosen region. If you are running this lab in Skillable, SKUs are restricted to names beginning with `Standard_B2*` or `Standard_D2*` only.
 
       ```hcl
-      address_space = "10.0.0.0/22"
-      subnets = {
-        AzureBastionSubnet = {
-          size                       = 26
-          has_nat_gateway            = false
-          has_network_security_group = false
-        }
-        private_endpoints = {
-          size                       = 28
-          has_nat_gateway            = false
-          has_network_security_group = true
-        }
-        virtual_machines = {
-          size                       = 24
-          has_nat_gateway            = true
-          has_network_security_group = false
-        }
-      }
-      tags = {
-        type = "avm"
-        env  = "demo"
-      }
       virtual_machine_sku = "Standard_D2s_v4"
       virtual_machine_image = {
         publisher = "Canonical"
@@ -63,15 +52,11 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    ```
    - You should see: `Terraform has been successfully initialized!`
 
-     ![](../../images/tf-init-n1.png)   
-
-1. Navigate to the **Source Control (1)** tab in Visual Studio Code and review the **Changes (2)** to the files.
-
-   ![](../../images/sc-01.png)   
+     ![](../../images/e2t1s3.png)   
 
 1. Open the **avm.virtual_machine.tf (1)** file and look at each of the properties, paying close attention to the **generated_secrets_key_vault_secret_config (2)** and **network_interfaces (3)** variables.
 
-    ![](../../images/vm-04.png)   
+    ![](../../images/e2t1s4.png)   
 
 1. Apply the changes with Terraform: 
 
@@ -104,6 +89,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    ```
    git add .  
    git commit -m "Add virtual machine and bastion"
+   git push origin main
    ```
 
    ![](../../images/vm-09.png)

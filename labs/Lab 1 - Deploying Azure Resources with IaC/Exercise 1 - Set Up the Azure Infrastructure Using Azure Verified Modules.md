@@ -1,18 +1,24 @@
 # Exercise 1: Set Up the Azure Infrastructure Using Azure Verified Modules
 
-### Prerequisites
+### Estimated Duration:
 
-* HashiCorp Terraform CLI Version 1.10 or higher: [Download](https://www.terraform.io/downloads)
-* Git: [Download](https://git-scm.com/downloads)
-* Visual Studio Code: [Download](https://code.visualstudio.com/)
-  * Azure Terraform Extension for Visual Studio Code: [Install](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureterraform)
-  * HashiCorp Terraform Extension for Visual Studio Code: [Install](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
-* Azure CLI: [Download](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update)
-* An Azure Subscription: [Free Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
+## 📘 Scenario
 
-### Quickstart
 
-The instructions for this sample are in the form of a Lab. Follow along with them to get up and running.
+
+## 📖 Overview
+
+
+
+## 🎯 Objectives
+
+You will be able to complete the following tasks:
+
+- Task 1 - Prepare the Terraform Development Environment
+- Task 2 - Base files and resources
+- Task 3 - Virtual network and subnets
+- Task 4 - Key Vault
+- Task 5 - Storage account
 
 ## Task 1: Prepare the Terraform Development Environment
 
@@ -58,6 +64,18 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-terraform-version-01.png)
 
+1. Copy the GitHub Repository link from the GitHub page URL, to set the GitHub repo in the Visual Studio Code.
+
+   ![](../../images/github-login.png)
+
+1. Use the URL to set the remote URL to the required Repository.
+
+   ```
+   git remote set-url origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
+   ```
+
+   ![](../../images/github-01.png)
+
 1. Sign in to Azure from the integrated terminal:
 
    ```
@@ -94,14 +112,35 @@ In this part we are going to setup our Terraform root module and deploy an Azure
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 
+1. In the **New Terminal**, create a new directory:
+
+   ```pwsh
+   mkdir avm-lab
+   ```
+
+   ![](../../images/t2s1.png)
+
+1. Navigate to the directory `avm-lab`.
+
+   ```pwsh
+   cd avm-lab
+   ```
+
+   ![](../../images/t2s2.png)
+
+1. Copy the files from the **Part 1** folder into the `avm-lab` folder.
+
+      ```pwsh
+      copy ../labs/part01-base/* .
+      ```
+
 1. In the Visual studio code, navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part01-base`
 
    -  Your file structure should look like this:
 
       ```plaintext
       📂terraformlabs
-      📂labs
-      ┣ 📂part01-base
+      ┣ 📂avm-lab
       ┃ ┣ 📜.gitignore
       ┃ ┣ 📜avm.log_analytics_workspace.tf
       ┃ ┣ 📜locals.tf
@@ -110,13 +149,13 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       ┃ ┣ 📜terraform.tf
       ┃ ┗ 📜variables.tf
       ```
-   -  Expand the **part01-base** directory by clicking the dropdown arrow next to it to view the **Terraform** files.
+   -  Expand the **avm-lab** directory by clicking the dropdown arrow next to it to view the **Terraform** files.
 
-      ![](../../images/lf-11.png)
+      ![](../../images/t2s4.png)
 
 1. Examine the `terraform` block in `terraform.tf` and note that we are referencing the `azurerm` and `random` providers.
 
-   ![](../../images/lf-12.png)
+   ![](../../images/t2s5.png)
 
 1. Examine the files below: 
 
@@ -152,7 +191,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       $env:TF_VAR_location = "eastus"
       ```
 
-      ![](../../images/tf-01.png)   
+      ![](../../images/t2s9.png)   
 
 1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
 
@@ -162,9 +201,9 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/tf-03.png)
 
-1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\labs\part01-base` directory, and then click Create File.
+1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\avm-lab` directory, and then click Create File.
 
-   ![](../../images/tf-04-n.png)
+   ![](../../images/t2s12.png)
 
 1. After the file is created, add the following code to it, and save the file `Ctrl + S`.
 
@@ -177,7 +216,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
       ![](../../images/tf-05.png)
 
-1. Navigate to the directory `C:\Users\azureuser\TerraformLabs\labs\part01-base`, and run the following command to initialize the Terraform configuration.
+1. Run the following command to initialize the Terraform configuration.
 
    ```
    terraform init
@@ -185,7 +224,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    
    - You should see: `Terraform has been successfully initialized!`
 
-     ![](../../images/ti-p1.png)
+     ![](../../images/t2s14.png)
 
 1. Run the following command to preview the resources that will be created and generate a Terraform plan file.
 
@@ -193,7 +232,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    terraform plan -out tfplan
    ```
 
-   ![](../../images/tf-08.png)   
+   ![](../../images/t2s15.png)   
 
 1. Run the following command to create the resources based on the generated Terraform plan file.
 
@@ -201,7 +240,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    terraform apply tfplan
    ```
 
-   ![](../../images/tf-09-n.png)
+   ![](../../images/t2s16.png)
 
    Expected output:
 
@@ -209,7 +248,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
    ```
 
-   ![](../../images/tf-09.png)
+   ![](../../images/t2s16-1.png)
 
 1. Take note of the outputs from the `terraform apply` command, they should look like this:
 
@@ -229,7 +268,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    git init -b main
    ```
 
-   ![](../../images/git-01.png)
+   ![](../../images/t2s20.png)
 
 1. Run the following command to stage all the files for commit.
 
@@ -237,7 +276,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    git add .
    ```
 
-   ![](../../images/git-02.png)
+   ![](../../images/t2s21.png)
 
 1. Run the following command to commit the staged files to the Git repository.
 
@@ -245,7 +284,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    git commit -m "Initial commit"
    ```
 
-   ![](../../images/git-03.png)
+   ![](../../images/t2s22.png)
 
 1. If you are prompted to set up a Git Author identity, follow the instructions and then re-run the `git commit` command.
 
@@ -254,7 +293,15 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
     git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
     ```
 
-    ![](../../images/git-04.png)
+    ![](../../images/t2s23.png)
+
+1. Re-run the git commit cmd:
+
+   ```
+   git commit -m "Initial commit"
+   ```
+
+   ![](../../images/t2s23-1.png)
 
 1. Run the command to upload the files to GitHub repository
 
@@ -262,11 +309,19 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    git push origin main
    ```
 
-   ![](../../images/gitpush.png)
+   ![](../../images/t2s25.png)
+
+1. After executing the above command, you will get a pop-up to connect to GitHub, click **Sign in with your browser**.
+
+   ![](../../images/connect-to-github.png)
+
+1. On the **Authorize Git Credential Manager** pop-up, click **Authorize git-ecosystem**.
+
+   ![](../../images/agcm.png)
 
 1. Review the files the GitHub repository.
 
-   ![](../../images/gitpush-01.png)
+   ![](../../images/t2s28.png)
 
 ## Task 3 - Virtual network and subnets
 
@@ -283,17 +338,19 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 | **Region scope** | VNets exist within a single Azure region. |
 | **CIDR Notation** | Specifies IP ranges using slash notation such as `/16` or `/24`. |
 
-1. Navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part02-virtual-network`.
+1. Copy the files from the **Part 2** folder into the `avm-lab` folder. This will add some new files and replace some files.
 
-1. Navigate to the `part02-virtual-network` directory and verify that the files are present.
+      ```pwsh
+      copy ../labs/part02-virtual-network/* .
+      ```
 
-   ![](../../images/vn-2.png)
+   ![](../../images/t3s1.png)
 
    -  Your file structure should now look like this if you have followed the instructions correctly (this structure will continue to grow as you progress through the lab):
 
       ```plaintext
       📂terraformlabs
-      ┣ 📂part02-virtual-network
+      ┣ 📂avm-lab
       ┃ ┣ 📂.git (hidden)
       ┃ ┣ 📂.terraform
       ┃ ┣ 📜.gitignore
@@ -312,21 +369,9 @@ In this part we are going to add a virtual network and subnets to our Terraform 
       ┃ ┗ 📜variables.tf
       ```
 
-1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
-
-   ![](../../images/tf-02.png)
-
-1. In the Search bar, give the name as **terraform.tfvars**, and press **Enter**.
-
-   ![](../../images/tf-03.png)
-
-1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\labs\part02-virtual-network` directory, and then click Create File.
-
-   ![](../../images/tf-04-n1.png)
-
 1. Open the **terraform.tfvars (1)** file, update it with the following **code (2)**, and then save the file using `Ctrl + s`.
 
-   ![](../../images/vn-3.png)
+   ![](../../images/t3s2.png)
 
       ```hcl
       address_space = "10.0.0.0/22"
@@ -361,23 +406,19 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    - You should see: `Terraform has been successfully initialized!`
 
-     ![](../../images/ti-p2.png)
-
-1. Navigate to the **Source Control** tab in Visual Studio Code and review the changes to the files.
-
-   ![](../../images/tf-13.png)
+     ![](../../images/t3s3.png)
 
 1. Open the **avm.ip_addresses.tf (1)** file and note the use of a utility module here, pay close attention to the **source and version (2)** properties. A utility module is a helper module that doesn't deploy anything itself, but is used to calculate common values.
 
-   ![](../../images/avm-01.png)
+   ![](../../images/t3s4.png)
 
 1. Open the **avm.virtual-network.tf (1)** file and look at each of the properties, paying close attention to the **source and version (2)** properties.
 
-   ![](../../images/avm-02.png)
+   ![](../../images/t3s5.png)
 
 1. Examine the diagnostics settings in **locals.tf** and take note that this same setting will be applied to all of the AVM modules in the lab.
 
-   ![](../../images/avm-03.png)
+   ![](../../images/t3s6.png)
 
 1. In order to find more detail about AVM modules, you can navigate to their documentation. For example, you can find the documentation for the Virtual Network module [here](https://registry.terraform.io/modules/Azure/avm-res-network-virtualnetwork/azurerm/latest). From there you can navigate to the source code and see the module's implementation [here](https://github.com/Azure/terraform-azurerm-avm-res-network-virtualnetwork).
 
@@ -387,11 +428,11 @@ In this part we are going to add a virtual network and subnets to our Terraform 
    terraform apply -auto-approve
    ```
 
-   ![](../../images/tf-14.png)
+   ![](../../images/t3s9.png)
 
 1. After the command completes successfully, you should see output similar to the following:
 
-   ![](../../images/tf-15.png)
+   ![](../../images/t3s10.png)
    
 1. Review the deployed resources in the Azure portal. In the global search bar, type **Virtual network (1)**, and then select **Virtual networks (2)** from the search results.
 
@@ -413,9 +454,9 @@ In this part we are going to add a virtual network and subnets to our Terraform 
    git push origin main
    ```
 
-   ![](../../images/tf-16.png)
+   ![](../../images/t3s13.png)
 
-   ![](../../images/gitpush-02.png)
+   ![](../../images/t3s13-1.png)
 
 1. Review the files the GitHub repository.
 
@@ -425,7 +466,13 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
-1. Navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part03-key-vault`.
+1. Copy the files from the **Part 3** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+
+      ```pwsh
+      copy ../labs/part03-key-vault/* .
+      ```
+
+      ![](../../images/t4s1.png)  
 
 1. Run the following command to initialize the Terraform configuration and install the Azure Verified Module (AVM) for Key Vault.
 
@@ -435,52 +482,11 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    - You should see: `Terraform has been successfully initialized!`
 
-     ![](../../images/ti-p3.png)
+     ![](../../images/t4s2.png)
 
 1. Open the **avm.key_vault.tf (1)** file and look at each of the properties, paying close attention to the **private_endpoints (2)** and **role_assignments (3)** variables.
 
-   ![](../../images/kv-03.png)
-
-1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
-
-   ![](../../images/tf-02.png)
-
-1. In the Search bar, give the name as **terraform.tfvars**, and press **Enter**.
-
-   ![](../../images/tf-03.png)
-
-1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\labs\part03-key-vault` directory, and then click Create File.
-
-   ![](../../images/tf-04.png)
-
-1. Open the **terraform.tfvars (1)** file, update it with the following **code (2)**, and then save the file using `Ctrl + s`.
-
-   ![](../../images/vn-3-n.png)
-
-      ```hcl
-      address_space = "10.0.0.0/22"
-      subnets = {
-        AzureBastionSubnet = {
-          size                       = 26
-          has_nat_gateway            = false
-          has_network_security_group = false
-        }
-        private_endpoints = {
-          size                       = 28
-          has_nat_gateway            = false
-          has_network_security_group = true
-        }
-        virtual_machines = {
-          size                       = 24
-          has_nat_gateway            = true
-          has_network_security_group = false
-        }
-      }
-      tags = {
-        type = "avm"
-        env  = "demo"
-      }
-      ```
+   ![](../../images/t4s3.png)
 
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
 
@@ -488,7 +494,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    terraform apply -auto-approve
    ```
 
-   ![](../../images/kv-07.png)
+   ![](../../images/t4s5.png)
 
 1. Navigate back to the Azure portal. In the search bar, type **Key vault (1)**, and then select **Key vaults (2)** from the search results to view the newly created resource.
 
@@ -503,15 +509,28 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    ```
    git add .  
    git commit -m "Add key vault"
+   git push origin main
    ```
 
-   ![](../../images/kv-06.png)
+   ![](../../images/t4s7.png)
+
+   ![](../../images/t4s7-1.png)
+   
+1. Review the files the GitHub repository.
+
+   ![](../../images/t4s8.png)
 
 ## Task 5 - Storage account
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
-1. Navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part04-storage-account`.
+1. Copy the files from the **Part 4** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+
+      ```pwsh
+      copy ../labs/part04-storage-account/* .
+      ```
+   
+      ![](../../images/t5s1.png)
 
 1. Run to install the AVM module for Storage Account.
 
@@ -521,15 +540,11 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
    - You should see: `Terraform has been successfully initialized!`
 
-     ![](../../images/tf-init-n.png)
-
-1. Navigate to the **Source Control (1)** tab in Visual Studio Code and review the **changes (2)** to the files.
-
-   ![](../../images/sa-02.png)
+     ![](../../images/t5s2.png)
 
 1. Open the **avm.storage-account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
 
-   ![](../../images/sa-03.png)
+   ![](../../images/t5s3.png)
 
 1. Note in the source control diff that we are adding a key to the Key Vault using the AVM module and assigning permissions for the user assigned managed identity to access the key.
 
@@ -539,13 +554,7 @@ In this part we are going to add a Storage Account to our Terraform configuratio
    terraform apply -auto-approve
    ```
 
-   Expected output:
-
-   ```
-   Apply complete! Resources: 21 added, 2 changed, 0 destroyed.
-   ```
-
-   ![](../../images/sa-04.png)
+   ![](../../images/t5s5.png)
 
 1. Navigate to the Azure portal. In the global search bar, type **Storage accounts (1)**, and then select **Storage accounts (2)** from the search results.
 
@@ -560,9 +569,16 @@ In this part we are going to add a Storage Account to our Terraform configuratio
    ```
    git add .  
    git commit -m "Add storage account"
+   git push origin main
    ```
 
-   ![](../../images/sa-07.png)
+   ![](../../images/t5s8.png)
+
+   ![](../../images/t5s8-1.png)
+
+1. Review the files the GitHub repository.
+
+   ![](../../images/t5s8-2.png)
 
 ---
 
