@@ -103,10 +103,6 @@ To adjust the zoom level for the environment page, click the **A↕** icon locat
 
 1. If a Welcome to Microsoft Azure pop-up window appears, simply click **Maybe later** to skip the tour.
 
-1. Navigate to **Resource Groups** and use the **IaC-Terraform-RG-<inject key="Deployment-ID" enableCopy="false"/></inject>** resource group for all Azure resource deployments.
-
-   ![](../images/terraform-lab-iac-rg.png)
-
 ### Resize the Virtual Machine View
 
 Use the **slider (three vertical dots)** located between the **Virtual Machine** and the **Lab Guide** panes to adjust the display size, allowing you to customize the layout based on your preference.

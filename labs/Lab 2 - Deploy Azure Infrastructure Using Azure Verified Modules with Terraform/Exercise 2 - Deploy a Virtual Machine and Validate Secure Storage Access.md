@@ -1,6 +1,6 @@
 # Exercise 2: Deploy a Virtual Machine and Validate Secure Storage Access
 
-### Estimated Duration: 30 Minutes
+### Estimated Duration:
 
 ## 📘 Scenario
 
@@ -14,26 +14,28 @@
 
 You will be able to complete the following tasks:
 
-- Task 1 - Virtual machine and Bastion
-- Task 2 - Connect to the VM via Bastion
-- Task 3 - Install the Azure CLI and login
-- Task 4 - Create a blob in the storage account
+- Task 1: Deploy the Virtual Machine and Azure Bastion
+- Task 2: Connect to the Virtual Machine Using Azure Bastion
+- Task 3: Install the Azure CLI and Sign In
+- Task 4: Upload and Manage Blobs in the Storage Account
 
-## Task 1 - Virtual machine and Bastion
+## Task 1 - Deploy the Virtual Machine and Azure Bastion
 
 In this part we are going to add a Virtual Machine to our Terraform configuration by leveraging the Azure Verified Module for Virtual Machine. The Virtual Machine is going to be used to interact with the Storage Account later. We are also going to add a role assignment to the storage module to assign permissions to the managed identity of the virtual machine to the storage container.
 
-1. Copy the files from the **Part 5** folder into the `avm-lab` folder, remembering to retain the existing files and just add an overwrite when prompted.
+1. Copy the files from the **Part 5** folder into the **avm-lab** folder. This will add new files and update existing ones. If prompted, choose to overwrite the existing files while retaining all other files.
 
       ```pwsh
       copy ../labs/part05-virtual-machine/* .
       ```
 
+      ![](../../images/e2t1s1-1.png)
+
 1. Add the following variables to the **terraform.tfvars (1)** file, and then save the **changes (2)** by pressing `Ctrl + S`.
 
    ![](../../images/e1t1s2.png)
 
-      >NOTE: You may need to choose a different virtual machine sku depending on availability in your chosen region. If you are running this lab in Skillable, SKUs are restricted to names beginning with `Standard_B2*` or `Standard_D2*` only.
+      >**Note:** You may need to choose a different virtual machine SKU depending on availability in your chosen region.
 
       ```hcl
       virtual_machine_sku = "Standard_D2s_v4"
@@ -64,7 +66,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    terraform apply -auto-approve   
    ```
 
-   ![](../../images/vm-05.png)
+   ![](../../images/e2t1s5.png)
 
    >**Note:** The deployment may take several minutes to complete, as the virtual machine and its associated resources are being provisioned. Please wait until the command finishes successfully.
 
@@ -92,9 +94,16 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    git push origin main
    ```
 
-   ![](../../images/vm-09.png)
+   ![](../../images/e2t1s8.png)
 
-## Task 2 - Connect to the VM via Bastion
+   ![](../../images/e2t1s8-1.png)
+
+1. Review the files in the **GitHub repository.**
+
+   ![](../../images/e2t1s8-2.png)
+
+
+## Task 2 - Connect to the Virtual Machine Using Azure Bastion
 
 In this part we are going to connect to the virtual machine via the Azure Bastion service using the SSH private key stored in the Key Vault.
 
@@ -126,7 +135,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
    ![](../../images/vm-14.png)
 
-## Task 3 - Install the Azure CLI and login
+## Task 3 - Install the Azure CLI and Sign In
 
 We are going to install the Azure CLI and login with the system assigned managed identity of the VM from the Azure Bastion SSH terminal.
 
@@ -146,7 +155,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
    ![](../../images/vm-16.png)
 
-## Task 4 - Create a blob in the storage account
+## Task 4 - Upload and Manage Blobs in the Storage Account
 
 We are going to create a blob in the storage account using the Azure CLI form the Azure Bastion SSH terminal.
 

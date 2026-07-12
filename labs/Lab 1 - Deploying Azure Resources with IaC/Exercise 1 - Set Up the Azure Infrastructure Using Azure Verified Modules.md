@@ -14,11 +14,11 @@
 
 You will be able to complete the following tasks:
 
-- Task 1 - Prepare the Terraform Development Environment
-- Task 2 - Base files and resources
-- Task 3 - Virtual network and subnets
-- Task 4 - Key Vault
-- Task 5 - Storage account
+- Task 1: Prepare the Terraform Development Environment
+- Task 2: Deploy the Base Infrastructure
+- Task 3: Configure the Virtual Network and Subnets
+- Task 4: Deploy the Key Vault
+- Task 5: Deploy the Storage Account
 
 ## Task 1: Prepare the Terraform Development Environment
 
@@ -64,11 +64,11 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-terraform-version-01.png)
 
-1. Copy the GitHub Repository link from the GitHub page URL, to set the GitHub repo in the Visual Studio Code.
+1. Copy the GitHub repository URL from the browser's address bar. You will use this URL to configure the GitHub repository in Visual Studio Code.
 
    ![](../../images/github-login.png)
 
-1. Use the URL to set the remote URL to the required Repository.
+1. Use the copied GitHub repository URL to set the remote URL for the required repository.
 
    ```
    git remote set-url origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
@@ -106,13 +106,13 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/lf-09.png)
 
-## Task 2 - Base files and resources
+## Task 2 - Deploy the Base Infrastructure
 
 In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm-res-log-analytics-workspace` module.
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 
-1. In the **New Terminal**, create a new directory:
+1. In the **New Terminal**, run the following command to create a new directory named **avm-lab**.
 
    ```pwsh
    mkdir avm-lab
@@ -128,13 +128,13 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s2.png)
 
-1. Copy the files from the **Part 1** folder into the `avm-lab` folder.
+1. Copy the files from the **Part 1** folder into the **avm-lab** folder by running the following command:
 
       ```pwsh
       copy ../labs/part01-base/* .
       ```
-
-1. In the Visual studio code, navigate to the directory `cd C:\Users\azureuser\TerraformLabs\labs\part01-base`
+   
+   ![](../../images/t2s3.png)
 
    -  Your file structure should look like this:
 
@@ -295,7 +295,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
     ![](../../images/t2s23.png)
 
-1. Re-run the git commit cmd:
+1. Re-run the following git commit command:
 
    ```
    git commit -m "Initial commit"
@@ -311,19 +311,19 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s25.png)
 
-1. After executing the above command, you will get a pop-up to connect to GitHub, click **Sign in with your browser**.
+1. If a prompt appears asking you to connect to GitHub after running the command, click **Sign in with your browser** to continue.
 
    ![](../../images/connect-to-github.png)
 
-1. On the **Authorize Git Credential Manager** pop-up, click **Authorize git-ecosystem**.
+1. If the Authorize Git Credential Manager pop-up appears, click **Authorize git-ecosystem** to continue.
 
    ![](../../images/agcm.png)
 
-1. Review the files the GitHub repository.
+1. Review the files in the **GitHub repository.**
 
    ![](../../images/t2s28.png)
 
-## Task 3 - Virtual network and subnets
+## Task 3 - Configure the Virtual Network and Subnets
 
 In this part we are going to add a virtual network and subnets to our Terraform configuration by leveraging the Azure Verified Module for Virtual Network. The Virtual Network is going to be used to provide private connectivity between and to our virtual machine, key vault and storage account.
 
@@ -338,7 +338,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 | **Region scope** | VNets exist within a single Azure region. |
 | **CIDR Notation** | Specifies IP ranges using slash notation such as `/16` or `/24`. |
 
-1. Copy the files from the **Part 2** folder into the `avm-lab` folder. This will add some new files and replace some files.
+1. Copy the files from the **Part 2** folder into the **avm-lab** folder. This will add new files and replace the existing files where applicable.
 
       ```pwsh
       copy ../labs/part02-virtual-network/* .
@@ -458,15 +458,15 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/t3s13-1.png)
 
-1. Review the files the GitHub repository.
+1. Review the files in the **GitHub repository.**
 
    ![](../../images/github-page.png)
 
-## Task 4 - Key Vault
+## Task 4 - Deploy the Key Vault
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
-1. Copy the files from the **Part 3** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+1. Copy the files from the **Part 3** folder into the **avm-lab** folder. When prompted, keep the existing files and choose to overwrite only the files that are being updated.
 
       ```pwsh
       copy ../labs/part03-key-vault/* .
@@ -516,15 +516,15 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/t4s7-1.png)
    
-1. Review the files the GitHub repository.
+1. Review the files in the **GitHub repository.**
 
    ![](../../images/t4s8.png)
 
-## Task 5 - Storage account
+## Task 5 - Deploy the Storage Account
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
-1. Copy the files from the **Part 4** folder into the `avm-lab` folder, remembering to retain the existing files and just add and overwrite when prompted.
+1. Copy the files from the **Part 4** folder into the **avm-lab** folder. If prompted, overwrite the existing files while retaining all other files.
 
       ```pwsh
       copy ../labs/part04-storage-account/* .
@@ -576,7 +576,7 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
    ![](../../images/t5s8-1.png)
 
-1. Review the files the GitHub repository.
+1. Review the files in the **GitHub repository.**
 
    ![](../../images/t5s8-2.png)
 
