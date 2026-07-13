@@ -311,8 +311,6 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s21.png)
 
-
-
 1. Run the following command to commit the staged files to the Git repository.
 
    ```
@@ -603,8 +601,6 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Open the **avm.storage-account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
 
    ![](../../images/t5s3.png)
-
-1. Note in the source control diff that we are adding a key to the Key Vault using the AVM module and assigning permissions for the user assigned managed identity to access the key.
 
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
 

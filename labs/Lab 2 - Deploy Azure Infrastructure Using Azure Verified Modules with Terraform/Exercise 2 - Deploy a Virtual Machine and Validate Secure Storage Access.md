@@ -42,7 +42,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
       >**Note:** You may need to choose a different virtual machine SKU depending on availability in your chosen region.
 
       ```hcl
-      virtual_machine_sku = "Standard_D2s_v4"
+      virtual_machine_sku = "Standard_B2s"
       virtual_machine_image = {
         publisher = "Canonical"
         offer     = "0001-com-ubuntu-server-jammy"
@@ -54,7 +54,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 1. Run the following command to initialize the Terraform configuration and install the Azure Verified Modules (AVMs) for the Virtual Machine and Role Assignments.
 
    ```pwsh
-   terraform init   
+   terraform init 
    ```
    - You should see: `Terraform has been successfully initialized!`
 
@@ -67,20 +67,28 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 1. Apply the changes with Terraform: 
 
    ```pwsh
-   terraform apply -auto-approve   
+   terraform apply -auto-approve
    ```
 
-   ![](../../images/e2t1s5.png)
+   >**Note:** This command applies the Terraform configuration and automatically approves the deployment without prompting for confirmation.
 
-   >**Note:** The deployment may take several minutes to complete, as the virtual machine and its associated resources are being provisioned. Please wait until the command finishes successfully.
+   ![](../../images/t5s5.png)
 
    Expected output:
 
    ```
-   Apply complete! Resources: 16 added, 8 changed, 1 destroyed.
-   ```   
+   Apply complete! Resources: 16 to added, 8 changed, 1 to destroyed.
+   ```
 
-   ![](../../images/vm-06.png)
+   ![](../../images/e2t1s4-1.png)
+
+1. After the command completes successfully, you should see output similar to the following:
+
+   ![](../../images/t3s9-2.png)
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
+
+   >**Note:** The deployment may take several minutes to complete, as the virtual machine and its associated resources are being provisioned. Please wait until the command finishes successfully.
 
 1. Navigate to the Azure portal. In the search bar, type **Virtual machines (1)**, and then select **Virtual machines (2)** from the search results.
 
@@ -137,19 +145,49 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
    ![](../../images/vm-11.png)
 
-1. Clear the **Open in new browser tab (1)** checkbox, and then click **Connect (2).**
+1. Select the **Open in new browser tab (1)** checkbox, and then click **Connect (2).**
 
    ![](../../images/vm-13.png)
 
-1. After you click **Connect**, the Virtual Machine opens in a new terminal session through Azure Bastion.
+1. After you click **Connect**, you may see the message **"A popup blocker is preventing a new window from opening. Please allow pop-ups and retry."**
 
-   ![](../../images/vm-14.png)
+   ![](../../images/e2t2s7.png)
+
+1. In the top-right corner of your browser, click the ellipsis **(...) (1)**, and then select **Settings (2)**.
+
+   ![](../../images/e2t2s8.png)
+
+1. In the **Settings**  page, click on **Privacy, search, and services (1)**, and then click **Site permissions (2)**.
+
+   ![](../../images/e2t2s9.png)
+
+1. Click **All permissions**.
+
+   ![](../../images/e2t2s10.png)
+
+1. Next, click on **Pop-ups and redirects**.
+
+   ![](../../images/e2t2s11.png)
+
+1. Under the **Default behavior**, turn the toggle **Off** beside **Blocked (recommended)**.
+
+   ![](../../images/e2t2s12.png)
+
+1. Now, navigate back to the Azure portal, return to the virtual machine, and click **Connect**.
+
+   ![](../../images/e2t2s13.png)
+
+1. After clicking **Connect**, you will be redirected to a new browser tab, where the **Virtual Machine** will be displayed.
+
+   ![](../../images/e2t2s14.png)
 
 ## Task 3 - Install the Azure CLI and Sign In
 
 We are going to install the Azure CLI and login with the system assigned managed identity of the VM from the Azure Bastion SSH terminal.
 
 1. Run the following command to install the Azure CLI.
+
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
 
    ```bash
    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -158,6 +196,8 @@ We are going to install the Azure CLI and login with the system assigned managed
    ![](../../images/vm-15.png)
 
 1. Run to login with the system assigned managed identity.
+
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
 
    ```
    az login --identity
@@ -170,6 +210,8 @@ We are going to install the Azure CLI and login with the system assigned managed
 We are going to create a blob in the storage account using the Azure CLI form the Azure Bastion SSH terminal.
 
 1. Run the following command to create a file named hello.txt with the content **"hello world"**. 
+
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
 
    ```
    echo "hello world" > hello.txt
@@ -189,6 +231,8 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
 1. Run the following command to upload the **hello.txt** file to the storage account. Replace <storage-account-name> with the storage account name that you copied in **Step 3.**
 
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+
    ```
    az storage blob upload --account-name <storage-account-name> --container-name demo --file hello.txt --name hello.txt --auth-mode login
    ```
@@ -196,6 +240,8 @@ We are going to create a blob in the storage account using the Azure CLI form th
    ![](../../images/blob-02.png)
 
 1. Run the following command to list the blobs in the container. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
+
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
 
    ```
    az storage blob list --account-name <storage-account-name> --container-name demo --auth-mode login
@@ -205,6 +251,8 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
 1. Run the following command to download the blob to a new file. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
 
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+
    ```
    az storage blob download --account-name <storage-account-name> --container-name demo --name hello.txt --file hello2.txt --auth-mode login
    ```
@@ -212,6 +260,8 @@ We are going to create a blob in the storage account using the Azure CLI form th
    ![](../../images/blob-04.png)
 
 1. Run to view the contents of the downloaded file.
+
+   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
 
    ```
    cat hello2.txt
