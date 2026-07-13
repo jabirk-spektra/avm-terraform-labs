@@ -62,7 +62,12 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
 1. Open the **avm.virtual_machine.tf (1)** file and look at each of the properties, paying close attention to the **generated_secrets_key_vault_secret_config (2)** and **network_interfaces (3)** variables.
 
-    ![](../../images/e2t1s4.png)   
+   ![](../../images/e2t1s4.png)
+
+   | Configuration | Description |
+   |:--------|:------------|
+   | `generated_secrets_key_vault_secret_config` | Configures the virtual machine to automatically store generated secrets, such as the SSH private key, in the specified Azure Key Vault. |
+   | `network_interfaces` | Configures the network interface (NIC) for the virtual machine, including its name and IP configuration. The NIC is connected to the virtual_machines subnet of the Virtual Network. |
 
 1. Apply the changes with Terraform: 
 
@@ -77,7 +82,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    Expected output:
 
    ```
-   Apply complete! Resources: 16 to added, 8 changed, 1 to destroyed.
+   Apply complete! Resources: 16 added, 8 changed, 1 destroyed.
    ```
 
    ![](../../images/e2t1s4-1.png)
