@@ -4,22 +4,63 @@
 
 ## 📘 Lab Scenario
 
+Zava is modernizing its cloud infrastructure by adopting Infrastructure as Code (IaC) to improve consistency, scalability, and operational efficiency across its Azure environments. To accelerate deployments while following Microsoft-recommended best practices, Zava has chosen to use Azure Verified Modules (AVMs) for Terraform—production-ready, reusable modules that simplify the deployment and management of Azure resources.
 
+In this hands-on lab, you will assume the role of a Cloud Infrastructure Engineer at Zava. Your task is to build a secure and scalable Azure environment using Terraform and Azure Verified Modules. Beginning with foundational resources such as a Resource Group and Log Analytics Workspace, you will progressively deploy networking, security, storage, and compute resources, including Azure Virtual Network, Key Vault, Storage Account, Azure Bastion, and a Linux Virtual Machine. You will also implement secure authentication using Managed Identity and Azure Key Vault to enable passwordless access to Azure resources while following Infrastructure as Code best practices.
 
 ## 📖 Lab Overview
 
+This lab provides a practical introduction to deploying Azure infrastructure using Azure Verified Modules (AVMs) with Terraform. Throughout the exercises, you will configure a complete Infrastructure as Code (IaC) environment and learn how Microsoft-supported AVMs simplify Azure resource deployment while ensuring consistency, security, and maintainability.
 
+You will begin by preparing the Terraform development environment and authenticating with Azure. Next, you will incrementally deploy core Azure services, including a Log Analytics Workspace, Virtual Network, Key Vault, Storage Account, Azure Bastion, and a Linux Virtual Machine using reusable AVMs. Each deployment will be validated through the Azure portal, while the Terraform configurations will be managed using Git and GitHub to simulate a real-world DevOps workflow.
+
+In the final stages, you will securely connect to the deployed virtual machine through Azure Bastion, authenticate using Managed Identity, and interact with Azure Storage by uploading and managing blobs without using storage account keys. By the end of the lab, you will have successfully implemented a secure, modular, and production-ready Azure infrastructure aligned with the cloud engineering practices followed at Zava.
 
 ## 🎯 Objectives
 
+After completing this lab, you will be able to:
 
+* Configure a Terraform development environment for Azure deployments.
+* Authenticate Terraform with Azure using the Azure CLI.
+* Deploy Azure infrastructure using Azure Verified Modules (AVMs).
+* Provision foundational Azure resources, including a Resource Group and Log Analytics Workspace.
+* Create and configure Virtual Networks, Subnets, Network Security Groups, and NAT Gateway using AVMs.
+* Deploy and configure Azure Key Vault for secure secret management.
+* Provision an Azure Storage Account with customer-managed encryption and secure access.
+* Deploy a Linux Virtual Machine and Azure Bastion using Terraform modules.
+* Securely connect to the virtual machine using Azure Bastion and SSH keys stored in Azure Key Vault.
+* Authenticate to Azure from the virtual machine using Managed Identity.
+* Upload, download, and manage blobs in Azure Storage using Azure CLI with Managed Identity authentication.
+* Execute the Terraform workflow (init, plan, and apply) to provision and manage Azure resources.
+* Track infrastructure changes using Git and GitHub version control.
+* Apply Infrastructure as Code (IaC) best practices for automation, modularity, scalability, security, and maintainability while building Azure environments at Zava.
 
 ## ⚙️ Prerequisites
 
+Before starting this lab, ensure that you have the following:
 
+* Basic understanding of **Microsoft Azure** services and cloud infrastructure concepts.
+* Familiarity with **Infrastructure as Code (IaC)** principles and Terraform fundamentals, including providers, modules, variables, and state files.
+* Working knowledge of command-line interfaces such as **PowerShell** or **Bash**.
+* Basic understanding of **Git** and version control concepts.
+* Access to the **CloudLabs** lab environment with the following preconfigured:
+
+  * Microsoft Azure subscription
+  * Azure CLI
+  * Terraform CLI (v1.9.x or later)
+  * Visual Studio Code
+  * Git
+  * GitHub account
+* Valid Azure and GitHub credentials provided with the lab environment.
+ 
 
 ## 🏗️ Architecture
 
+The architecture leverages Terraform and Azure Verified Modules (AVMs) to provision a secure and scalable Azure infrastructure following Infrastructure as Code (IaC) best practices. A Resource Group serves as the deployment boundary, hosting a Virtual Network with dedicated subnets for Azure Bastion, Virtual Machines, and Private Endpoints. Azure Bastion provides secure browser-based SSH access to the Linux Virtual Machine without exposing public IP addresses.
+
+The solution integrates Azure Key Vault to securely store SSH keys and encryption keys, while Azure Storage Account provides secure object storage for application data. Both services are accessed through Private Endpoints, ensuring that traffic remains within the Azure backbone network. Private DNS Zones enable seamless name resolution for these private endpoints, allowing resources within the Virtual Network to communicate securely using standard Azure service names.
+
+A User Assigned Managed Identity is used to authenticate the Virtual Machine to Azure services without storing credentials, enabling secure access to Key Vault and Storage through Azure Role-Based Access Control (RBAC). Throughout the deployment, Visual Studio Code, Terraform CLI, and Azure CLI are used to develop, provision, and manage the infrastructure, while GitHub is used to version-control the Terraform configurations, resulting in a secure, repeatable, and production-ready Azure environment.
 
 
 ## 🖼️ Architecture Diagram

@@ -4,15 +4,19 @@
 
 ## 📘 Scenario
 
+As a Cloud Infrastructure Engineer at Zava, you have been tasked with establishing the organization's foundational Azure infrastructure using Azure Verified Modules (AVMs) for Terraform. To ensure consistency, security, and scalability across deployments, Zava has standardized on Infrastructure as Code (IaC) practices and reusable Microsoft-validated Terraform modules.
 
+In this exercise, you will prepare the Terraform development environment, authenticate to Azure, and progressively deploy core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account. By leveraging AVMs, you will build a secure and modular infrastructure that serves as the foundation for hosting workloads in subsequent exercises.
 
 ## 📖 Overview
 
+In this exercise, you will configure the local Terraform development environment and use Azure Verified Modules (AVMs) to provision foundational Azure infrastructure. You will begin by verifying the required tools, authenticating to Azure, and initializing the Terraform configuration. Next, you will deploy essential Azure resources such as a Log Analytics Workspace, Virtual Network with subnets, Azure Key Vault, and an Azure Storage Account using reusable Terraform modules.
 
+Throughout the exercise, you will validate each deployment in the Azure portal and use Git and GitHub to version-control your Terraform configurations. By the end of the exercise, you will have successfully deployed a secure, production-ready Azure infrastructure that provides the networking, security, monitoring, and storage services required for the remaining lab activities.
 
 ## 🎯 Objectives
 
-You will be able to complete the following tasks:
+In this exercise, you will complete the following tasks:
 
 - Task 1: Prepare the Terraform Development Environment
 - Task 2: Deploy the Base Infrastructure
@@ -108,7 +112,7 @@ In this task, you will prepare the local development environment required for Te
 
 ## Task 2 - Deploy the Base Infrastructure
 
-In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm-res-log-analytics-workspace` module.
+In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm.log_analytics_workspace` module.
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 

@@ -4,15 +4,19 @@
 
 ## 📘 Scenario
 
+With the foundational Azure infrastructure successfully deployed, Zava is ready to provision a secure compute environment for administrators and applications. To align with the organization's security standards, the virtual machine must be deployed without a public IP address, leverage Azure Bastion for secure remote access, and use Managed Identity for authentication to Azure services.
 
+In this exercise, you will deploy a Linux Virtual Machine and Azure Bastion using Azure Verified Modules (AVMs). You will securely connect to the virtual machine using an SSH private key stored in Azure Key Vault, authenticate to Azure using Managed Identity, and validate secure access to Azure Storage by uploading and managing blobs without relying on storage account keys or connection strings.
 
 ## 📖 Overview
 
+In this exercise, you will extend the Azure infrastructure by deploying a Linux Virtual Machine, Azure Bastion, and the supporting resources required for secure administration and storage access. Using Azure Verified Modules (AVMs), you will update the existing Terraform configuration to provision the virtual machine and configure role assignments that enable secure access to Azure Storage.
 
+After the deployment is complete, you will connect to the virtual machine through Azure Bastion using an SSH private key stored in Azure Key Vault. You will then install the Azure CLI, authenticate using the virtual machine's Managed Identity, and interact with Azure Storage by uploading, listing, downloading, and verifying blob data. By the end of the exercise, you will have validated a secure, passwordless authentication workflow that demonstrates Azure best practices for identity management, private connectivity, and Infrastructure as Code.
 
 ## 🎯 Objectives
 
-You will be able to complete the following tasks:
+In this exercise, you will complete the following tasks:
 
 - Task 1: Deploy the Virtual Machine and Azure Bastion
 - Task 2: Connect to the Virtual Machine Using Azure Bastion
