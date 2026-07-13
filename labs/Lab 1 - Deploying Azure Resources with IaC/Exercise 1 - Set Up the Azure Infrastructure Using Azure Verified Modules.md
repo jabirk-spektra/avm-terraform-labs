@@ -50,7 +50,7 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-select-folder-terraformlabs-01.png)
 
-1. Now you will see another screen Do you trust the authors of the files in this folder?. Select the **checkbox (1)** *Trust the authors of all files in the parent folder 'azureuser'* and then click **Yes, I trust the authors (2)**.
+1. Now you will see another screen Do you trust the authors of the files in this folder?. Click **Trust Folder & Continue**.
 
    ![](../../images/vsc-trust-folder-terraformlabs-01.png)
 
@@ -101,6 +101,8 @@ In this task, you will prepare the local development environment required for Te
 ## Task 2 - Deploy the Base Infrastructure
 
 In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm.log_analytics_workspace` module.
+
+> **Important:** Do not clear or close the PowerShell terminal, as doing so may interrupt the Terraform session and affect the remaining lab tasks.
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 
@@ -191,6 +193,10 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
 1. In the Search bar, give the name as **terraform.tfvars** and press **Enter**.
 
+   ```
+   terraform.tfvars
+   ```
+
    ![](../../images/tf-03.png)
 
 1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\TerraformLabs\avm-lab` directory, and then click Create File.
@@ -223,8 +229,15 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform plan -out tfplan
    ```
+   Expected output:
+
+   ```
+   Plan: 6 to add, 0 to change, 0 to destroy.
+   ```
 
    ![](../../images/t2s15.png)   
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
 
 1. Run the following command to create the resources based on the generated Terraform plan file.
 
@@ -234,6 +247,8 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s16.png)
 
+   >**Note**: The **terraform apply tfplan** command applies the execution plan saved in the **tfplan file** and deploys the Azure resources exactly as defined in the previously generated Terraform plan.
+
    Expected output:
 
    ```
@@ -241,6 +256,8 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
 
    ![](../../images/t2s16-1.png)
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
 
 1. Take note of the outputs from the `terraform apply` command, they should look like this:
 
@@ -265,6 +282,18 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
 
    ![](../../images/github-01.png)
+
+1. Configure your **Git Author** identity by following the on-screen instructions before proceeding.
+
+    ```pwsh
+    git config --global user.email <inject key="GitHub User Name" enableCopy="true"/>
+    ```
+
+   ```
+    git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
+    ```
+
+    ![](../../images/t2s23.png)
 
 1. Run the following command to initialize a new Git repository with the default branch set to main.
 
@@ -291,23 +320,6 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
 
    ![](../../images/t2s22.png)
-
-1. If you are prompted to set up a Git Author identity, follow the instructions and then re-run the `git commit` command.
-
-    ```pwsh
-    git config --global user.email <inject key="GitHub User Name" enableCopy="true"/>
-    git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
-    ```
-
-    ![](../../images/t2s23.png)
-
-1. Re-run the following git commit command:
-
-   ```
-   git commit -m "Initial commit"
-   ```
-
-   ![](../../images/t2s23-1.png)
 
 1. Run the command to upload the files to GitHub repository
 
@@ -375,7 +387,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
       ┃ ┗ 📜variables.tf
       ```
 
-1. Open the **terraform.tfvars (1)** file, update it with the following **code (2)**, and then save the file using `Ctrl + s`.
+1. Open the **terraform.tfvars (1)** file, replace it with the following **code (2)**, and then save the file using `Ctrl + s`.
 
    ![](../../images/t3s2.png)
 
@@ -430,15 +442,27 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
 1. Run the following command in the terminal to apply the Terraform configuration and deploy the Azure resources.
 
+   >**Note:** This command applies the Terraform configuration and automatically approves the deployment without prompting for confirmation.
+
    ```
    terraform apply -auto-approve
    ```
 
    ![](../../images/t3s9.png)
 
+   Expected output:
+
+   ```
+   Apply complete! Resources: 19 added, 0 changed, 0 destroyed.
+   ```
+
+   ![](../../images/t3s9-1.png)
+
 1. After the command completes successfully, you should see output similar to the following:
 
-   ![](../../images/t3s10.png)
+   ![](../../images/t3s9-2.png)
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
    
 1. Review the deployed resources in the Azure portal. In the global search bar, type **Virtual network (1)**, and then select **Virtual networks (2)** from the search results.
 
@@ -502,11 +526,27 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
 
+   >**Note:** This command applies the Terraform configuration and automatically approves the deployment without prompting for confirmation.
+
    ```
    terraform apply -auto-approve
    ```
 
    ![](../../images/t4s5.png)
+
+   Expected output:
+
+   ```
+   Apply complete! Resources: 15 added, 0 changed, 0 destroyed.
+   ```
+
+   ![](../../images/t4s5-1.png)
+
+1. After the command completes successfully, you should see output similar to the following:
+
+   ![](../../images/t3s9-2.png)
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
 
 1. Navigate back to the Azure portal. In the search bar, type **Key vault (1)**, and then select **Key vaults (2)** from the search results to view the newly created resource.
 
@@ -567,12 +607,28 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Note in the source control diff that we are adding a key to the Key Vault using the AVM module and assigning permissions for the user assigned managed identity to access the key.
 
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
+
+   >**Note:** This command applies the Terraform configuration and automatically approves the deployment without prompting for confirmation.
    
    ```
    terraform apply -auto-approve
    ```
 
    ![](../../images/t5s5.png)
+
+   Expected output:
+
+   ```
+   Apply complete! Resources: 20 added, 2 changed, 0 destroyed.
+   ```
+
+   ![](../../images/t5s5-1.png)
+
+1. After the command completes successfully, you should see output similar to the following:
+
+   ![](../../images/t3s9-2.png)
+
+   >**Note**: Scroll up in the **Terminal** to view the command output.
 
 1. Navigate to the Azure portal. In the global search bar, type **Storage accounts (1)**, and then select **Storage accounts (2)** from the search results.
 

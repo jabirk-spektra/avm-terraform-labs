@@ -186,7 +186,7 @@ Use the **slider (three vertical dots)** located between the **Virtual Machine**
 
    ![](.././images/stay.png)
 
-1. You are now successfully logged in to **GitHub** and have been redirected to the **GitHub homepage**.
+1. You are now successfully signed in to **GitHub** and redirected to the **GitHub home page**. Click your **Repository** to open it.
 
    ![](.././images/github-homepage.png)
 
