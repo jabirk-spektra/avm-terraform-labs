@@ -151,27 +151,72 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s5.png)
 
+   | Concept | Description |
+   |:--------|:------------|
+   | **AzureRM Provider (azurerm)** | The Azure Resource Manager provider enables Terraform to create, update, and manage Azure resources such as Virtual Networks, Virtual Machines, Storage Accounts, and Key Vaults. |
+   | **Random Provider (random)** | Provides utilities to generate random values such as strings, passwords, integers, and unique resource names. It does not create Azure resources. | 
+
 1. Examine the files below: 
 
    * `locals.tf`
 
      ![](../../images/locals.png)
 
+      | Concept | Description |
+      |:--------|:------------|
+      | **locals** | Defines reusable local values that can be referenced throughout the Terraform configuration, reducing duplication and improving consistency. |
+      | **name_replacements** | Creates a collection of values that will be substituted into the resource naming templates. |
+      | **workload** | Represents the application or workload name (for example, demo) that becomes part of the Azure resource names. |
+      | **environment** | Represents the deployment environment (for example, dev, test, or prod) and is included in the resource names to distinguish environments. | 
+      | **location** | Specifies the Azure region (for example, swedencentral or eastus) that is incorporated into the resource names. | 
+      | **sequence** | Generates a three-digit sequence number (for example, 001, 002, 003) using the format ("%03d", ...) function to ensure unique and consistently formatted resource names. |
+      | **resource_names** | Generates the final resource names by replacing the placeholders in the resource name templates with the values defined in name_replacements. | 
+
    * `variables.tf` 
    
      ![](../../images/variable.png)
+
+      | Concept | Description |
+      |:--------|:------------|
+      | **variable "location"** | Defines the Azure region where all resources will be deployed (for example, swedencentral or eastus).|
+      | **type = string** | Specifies that the variable accepts a text value.|
+      | **validation** | Ensures the value entered for the variable follows the required format before Terraform executes.|
+      | **variable "resource_name_workload"** | Defines the workload name that is used as part of the Azure resource naming convention.|
+      | **default = "demo"** | Assigns a default workload name if no value is provided by the user.|
 
    * `outputs.tf`
 
      ![](../../images/output.png)
 
+      | Concept | Description |
+      |:--------|:------------|
+      | **output "resource_names"** | Displays the names of the Azure resources created by Terraform after the deployment completes.|
+      | **local.resource_names** | Retrieves the generated resource names from the locals.tf file.|
+      | **output "resource_ids"** | Displays the Azure Resource IDs of the deployed resources after the deployment completes.|
+      | **module.resource_group.resource_id** | Returns the Resource ID of the deployed Resource Group.|
+      | **module.log_analytics_workspace.resource_id** | Returns the Resource ID of the deployed Log Analytics Workspace.|
+
    * `main.tf`
 
      ![](../../images/main.png)
 
+      | Concept | Description |
+      |:--------|:------------|
+      | **module "resource_group"** | Uses the Azure Verified Module (AVM) to deploy an Azure Resource Group.|
+      | **source** | Specifies the Terraform Registry location of the Azure Verified Module used to create the Resource Group.|
+      | **version** | Specifies the version of the AVM module to ensure a consistent deployment.|
+      | **location = var.location** | Deploys the Resource Group in the Azure region specified by the location variable.|
+      | **name = local.resource_names.resource_group_name** | Assigns the Resource Group name generated in the locals.tf file.|
+      | **tags = var.tags** | Applies the user-defined tags to the Resource Group for easier organization and management.|
+
 1. Examine the `avm.log_analytics_workspace.tf` file and note the `source` and `version` properties.
 
    ![](../../images/avm.png)
+
+      | Concept | Description |
+      |:--------|:------------|
+      | **source** | Specifies the Terraform Registry location of the Azure Verified Module (AVM) that Terraform downloads and uses to deploy the Log Analytics Workspace.|
+      | **version** | Specifies the version of the AVM module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions.|
 
 1. Create an environment variable to set the location variable:
 
@@ -413,6 +458,14 @@ In this part we are going to add a virtual network and subnets to our Terraform 
         env  = "demo"
       }
       ```
+   
+   | Configuration | Description |
+   |:--------|:------------|
+   | `AzureBastionSubnet` | Creates a dedicated subnet for the Azure Bastion service. |
+   | `size = 26` | Allocates a /26 subnet address range for Azure Bastion. |
+   | `private_endpoints` | Creates a subnet for hosting Azure Private Endpoints. |
+   | `virtual_machines` | Creates a subnet for deploying Virtual Machines. |
+   | `has_network_security_group = true` | Associates a Network Security Group (NSG) with the Private Endpoints subnet. |
 
 1. Run the following command to initialize the Terraform configuration and install the Azure Verified Module (AVM) for Virtual Networks along with the required networking resources.
 
@@ -428,13 +481,29 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/t3s4.png)
 
+   | Configuration | Description |
+   |:--------|:------------|
+   | `source` | Specifies the Terraform Registry location of the Azure Verified Utility Module (AVM Utility) that Terraform downloads to calculate IP address ranges and subnet prefixes. |
+   | `version` | Specifies the version of the utility module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions. |
+
 1. Open the **avm.virtual-network.tf (1)** file and look at each of the properties, paying close attention to the **source and version (2)** properties.
 
    ![](../../images/t3s5.png)
 
+   | Configuration | Description |
+   |:--------|:------------|
+   | `source` | Specifies the Terraform Registry location of the Azure Verified Module (AVM) that Terraform downloads and uses to deploy the Azure Virtual Network. |
+   | `version` | Specifies the version of the Azure Verified Module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions. |
+
 1. Examine the diagnostics settings in **locals.tf** and take note that this same setting will be applied to all of the AVM modules in the lab.
 
    ![](../../images/t3s6.png)
+
+   | Configuration | Description |
+   |:--------|:------------|
+   | `diagnostic_settings` | Defines the diagnostic settings that are applied to Azure resources to collect logs and metrics. |
+   | `Log Analytics Workspace` | Configures Azure resources to send their diagnostic logs and metrics to the deployed Log Analytics Workspace for centralized monitoring. |
+   | `Reusable Local Value` | Stores the diagnostic settings as a local value so the same configuration can be reused across multiple Azure Verified Modules (AVMs), ensuring consistent monitoring for all deployed resources. |
 
 1. In order to find more detail about AVM modules, you can navigate to their documentation. For example, you can find the documentation for the Virtual Network module [here](https://registry.terraform.io/modules/Azure/avm-res-network-virtualnetwork/azurerm/latest). From there you can navigate to the source code and see the module's implementation [here](https://github.com/Azure/terraform-azurerm-avm-res-network-virtualnetwork).
 
@@ -522,6 +591,14 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/t4s3.png)
 
+   | Configuration | Description |
+   |:--------|:------------|
+   | `private_endpoints` | Configures a Private Endpoint for the Key Vault, allowing it to be accessed securely over the Virtual Network instead of the public internet. |
+   | `Private DNS Zone` | Links the Private Endpoint to a Private DNS Zone, enabling the Key Vault name to resolve to its private IP address. |
+   | `Subnet Association` | Deploys the Private Endpoint into the private_endpoints subnet of the Virtual Network. |
+   | `role_assignments` | Assigns Azure Role-Based Access Control (RBAC) permissions to users or identities for the Key Vault. |
+   | `Key Vault Administrator` | Grants the specified user or identity full administrative permissions to manage the Key Vault, including keys, secrets, and certificates. |
+
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
 
    >**Note:** This command applies the Terraform configuration and automatically approves the deployment without prompting for confirmation.
@@ -601,6 +678,12 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Open the **avm.storage-account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
 
    ![](../../images/t5s3.png)
+
+   | Configuration | Description |
+   |:--------|:------------|
+   | `managed_identities` | Configures managed identities for the Storage Account, allowing it to securely authenticate with other Azure services without storing credentials. |
+   | `customer_managed_key` | Configures the Storage Account to use a customer-managed encryption key stored in Azure Key Vault instead of the default Microsoft-managed key. |
+   | `containers` | Creates blob containers within the Storage Account and defines their access level. In this configuration, a private container named demo is created. |
 
 1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
 
