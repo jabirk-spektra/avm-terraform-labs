@@ -264,6 +264,10 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform init
    ```
+
+   >**Note**: If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**, and then navigate back to the **avm-lab** directory before running the command again.
+
+   ![](../../images/git-n.png)
    
    - You should see: `Terraform has been successfully initialized!`
 
@@ -316,18 +320,6 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/lw-02.png)
 
-1. Navigate to the **GitHub repository** in your browser. Copy the **GitHub repository URL** from the browser's address bar. You will use this URL to configure the repository in **Visual Studio Code**.
-
-   ![](../../images/github-login.png)
-
-1. Use the copied GitHub repository URL to set the remote URL for the required repository.
-
-   ```
-   git remote set-url origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
-   ```
-
-   ![](../../images/github-01.png)
-
 1. Configure your **Git Author** identity by following the on-screen instructions before proceeding.
 
     ```pwsh
@@ -348,6 +340,18 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s20.png)
 
+1. Navigate to the **GitHub repository** in your browser. Copy the **GitHub repository URL** from the browser's address bar. You will use this URL to configure the repository in **Visual Studio Code**.
+
+   ![](../../images/github-login.png)
+
+1. Use the copied GitHub repository URL to add the remote repository.
+
+   ```
+   git remote add origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
+   ```
+
+   ![](../../images/github-01.png)
+
 1. Run the following command to stage all the files for commit.
 
    ```
@@ -366,8 +370,10 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
 1. Run the command to upload the files to GitHub repository
 
+   >**Note:** The CloudLabs GitHub repository is pre-populated with an initial `README.md` commit. Therefore, use `--force` for the first push to replace the default repository contents with your local repository.
+
    ```pwsh
-   git push origin main
+   git push --force -u origin main
    ```
 
    ![](../../images/t2s25.png)
