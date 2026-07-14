@@ -1,4 +1,4 @@
-# Exercise 2: Deploy a Virtual Machine and Validate Secure Storage Access
+# Exercise 3: Deploy a Virtual Machine and Validate Secure Storage Access
 
 ### Estimated Duration:
 
