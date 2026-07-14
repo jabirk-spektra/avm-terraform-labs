@@ -184,7 +184,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
      >**Note**: You will see a pop-up. Click **Allow.**
 
-     ![](../../images/bast-allow-n.png)   
+     ![](../../images/bast-allow-n1.png)   
 
 1. After clicking **Connect**, you will be redirected to a new browser tab, where the **Virtual Machine** will be displayed.
 

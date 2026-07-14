@@ -154,6 +154,8 @@ In this part we are going to add a virtual network and subnets to our Terraform 
    terraform apply -auto-approve
    ```
 
+   >**Note:** The command may take a few minutes to complete. Please wait until it finishes before proceeding.
+
    ![](../../images/t3s9.png)
 
    Expected output:
@@ -181,6 +183,10 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 1. Review the **Virtual network** that was created as part of the Terraform deployment.
 
    ![](../../images/vnet-03.png)
+
+1. Under Settings, click **Subnets (1)**, and review the subnet **details (2)**.
+
+   ![](../../images/subnet.png)
 
 1. Navigate back to Visual Studio Code, and in the terminal, run the following command to commit the changes to the Git repository:
 
@@ -246,6 +252,8 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
    terraform apply -auto-approve
    ```
 
+   >**Note:** The command may take a few minutes to complete. Please wait until it finishes before proceeding.
+
    ![](../../images/t4s5.png)
 
    Expected output:
@@ -269,6 +277,10 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 1. Select the newly created Key vault, and review the resource.
 
    ![](../../images/kv-05.png)
+
+1. Under **Objects**, click **Keys (1)**, and view the **generated key (2).**
+
+   ![](../../images/keys.png)
 
 1. Commit the changes to git: 
 
@@ -332,6 +344,8 @@ In this part we are going to add a Storage Account to our Terraform configuratio
    terraform apply -auto-approve
    ```
 
+   >**Note:** The command may take a few minutes to complete. Please wait until it finishes before proceeding.   
+
    ![](../../images/t5s5.png)
 
    Expected output:
@@ -355,6 +369,10 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Select the **Storage account (1)** created by the Terraform deployment, and review its **details (2)**.
 
    ![](../../images/sa-06.png)
+
+1. Under **Data storage**, select **Containers (1)** to view the **demo (2)** container.
+
+   ![](../../images/stgacc.png)
 
 1. Commit the changes to git:
 
