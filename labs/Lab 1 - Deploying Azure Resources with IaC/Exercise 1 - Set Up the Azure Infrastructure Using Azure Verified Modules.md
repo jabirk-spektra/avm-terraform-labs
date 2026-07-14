@@ -319,12 +319,12 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
 1. Configure your **Git Author** identity by following the on-screen instructions before proceeding.
 
-    ```pwsh
-    git config --global user.email <inject key="GitHub User Name" enableCopy="true"/>
+    ```
+    git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
     ```
 
-   ```
-    git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
+    ```pwsh
+    git config --global user.email <inject key="AzureAdUserEmail"></inject>
     ```
 
     ![](../../images/t2s23.png)
