@@ -174,7 +174,7 @@ Use the **slider (three vertical dots)** located between the **Virtual Machine**
 
    ![](.././images/prr-01.png)
 
-1. In case you see the **Sign in** tab. Here, enter your Azure Entra credentials and click **Next (2)**.
+1. In case you see the **Sign in** tab. Here, enter your Azure Entra ID credentials and click **Next (2)**.
 
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject> **(1)**
 

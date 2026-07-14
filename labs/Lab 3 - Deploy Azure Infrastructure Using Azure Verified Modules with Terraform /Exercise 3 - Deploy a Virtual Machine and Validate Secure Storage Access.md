@@ -121,7 +121,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
    ![](../../images/e2t1s8-1.png)
 
-1. Review the files in the **GitHub repository.**
+1. Refresh the **GitHub repository** page, and review the files in the repository.
 
    ![](../../images/e2t1s8-2.png)
 
@@ -158,33 +158,33 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
    ![](../../images/e2t2s7.png)
 
-1. In the top-right corner of your browser, click the ellipsis **(...) (1)**, and then select **Settings (2)**.
+   -  In the top-right corner of your browser, click the ellipsis **(...) (1)**, and then select **Settings (2)**.
 
-   ![](../../images/e2t2s8.png)
+      ![](../../images/e2t2s8.png)
 
-1. In the **Settings**  page, click on **Privacy, search, and services (1)**, and then click **Site permissions (2)**.
+   - In the **Settings**  page, click on **Privacy, search, and services (1)**, and then click **Site permissions (2)**.
 
-   ![](../../images/e2t2s9.png)
+     ![](../../images/e2t2s9.png)
 
-1. Click **All permissions**.
+   - Click **All permissions**.
 
-   ![](../../images/e2t2s10.png)
+     ![](../../images/e2t2s10.png)
 
-1. Next, click on **Pop-ups and redirects**.
+   - Next, click on **Pop-ups and redirects**.
 
-   ![](../../images/e2t2s11.png)
+     ![](../../images/e2t2s11.png)
 
-1. Under the **Default behavior**, turn the toggle **Off** beside **Blocked (recommended)**.
+   - Under the **Default behavior**, turn the toggle **Off** beside **Blocked (recommended)**.
 
-   ![](../../images/e2t2s12.png)
+     ![](../../images/e2t2s12.png)
 
-1. Now, navigate back to the Azure portal, return to the virtual machine, and click **Connect**.
+   - Now, navigate back to the Azure portal, return to the virtual machine, and click **Connect**.
 
-   ![](../../images/e2t2s13.png)
+     ![](../../images/e2t2s13.png)
 
-   * >**Note**: You will see a pop-up. Click **Allow.**
+     >**Note**: You will see a pop-up. Click **Allow.**
 
-     ![](../../images/bast-allow.png)   
+     ![](../../images/bast-allow-n.png)   
 
 1. After clicking **Connect**, you will be redirected to a new browser tab, where the **Virtual Machine** will be displayed.
 
@@ -196,7 +196,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
 1. Run the following command to install the Azure CLI.
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```bash
    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -206,7 +206,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
 1. Run to login with the system assigned managed identity.
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```
    az login --identity
@@ -220,7 +220,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
 1. Run the following command to create a file named hello.txt with the content **"hello world"**. 
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```
    echo "hello world" > hello.txt
@@ -238,9 +238,9 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    >**Note**: The storage account name may very.   
 
-1. Run the following command to upload the **hello.txt** file to the storage account. Replace <storage-account-name> with the storage account name that you copied in **Step 3.**
+1. Run the following command to upload the **hello.txt** file to the storage account. Replace <storage-account-name> with the storage account name that you copied in **Task 4, Step 3.**
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```
    az storage blob upload --account-name <storage-account-name> --container-name demo --file hello.txt --name hello.txt --auth-mode login
@@ -248,9 +248,9 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-02.png)
 
-1. Run the following command to list the blobs in the container. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
+1. Run the following command to list the blobs in the container. Replace <storage-account-name> with the storage account name you copied in **Task 4, Step 3.**
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```
    az storage blob list --account-name <storage-account-name> --container-name demo --auth-mode login
@@ -258,9 +258,9 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-03.png)
 
-1. Run the following command to download the blob to a new file. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
+1. Run the following command to download the blob to a new file. Replace <storage-account-name> with the storage account name you copied in **Task 4, Step 3.**
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```
    az storage blob download --account-name <storage-account-name> --container-name demo --name hello.txt --file hello2.txt --auth-mode login
@@ -270,8 +270,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
 1. Run to view the contents of the downloaded file.
 
-   >**Note**: Copy the commands to Notepad, and then paste them into the virtual machine to run them.
-
+   >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
    ```
    cat hello2.txt
    ```

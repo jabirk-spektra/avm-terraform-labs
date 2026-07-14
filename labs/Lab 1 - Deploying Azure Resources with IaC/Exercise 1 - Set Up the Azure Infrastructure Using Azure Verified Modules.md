@@ -55,7 +55,7 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-trust-folder-terraformlabs-01.png)
 
-   >**Note**: If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**.
+1. If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**.
 
    ![](../../images/git-n.png)
 
@@ -225,7 +225,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       $env:TF_VAR_location = "<azure region>"
       ```
 
-1. Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,eastus2,centralus,canadaeast,westus,westus3).
+1. Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,centralus,canadaeast,westus).
 
       ```pwsh
       $env:TF_VAR_location = "eastus"
@@ -313,7 +313,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/lw-01.png)
 
-1. Click on the newly created **Log Analytics workspace** resource.
+1. Verify that the newly created **Log Analytics Workspace** resource is visible in the Azure portal.
 
    ![](../../images/lw-02.png)
 
@@ -383,7 +383,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/agcm.png)
 
-1. Review the files in the **GitHub repository.**
+1. Refresh the **GitHub repository** page, and review the files in the repository.
 
    ![](../../images/t2s28.png)
 

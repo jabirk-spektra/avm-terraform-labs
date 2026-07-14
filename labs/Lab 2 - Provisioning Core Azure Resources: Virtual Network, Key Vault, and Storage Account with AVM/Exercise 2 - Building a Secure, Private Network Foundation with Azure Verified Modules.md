@@ -200,7 +200,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/t3s13-1.png)
 
-1. Review the files in the **GitHub repository.**
+1. Refresh the **GitHub repository** page, and review the files in the repository.
 
    ![](../../images/github-page.png)
 
@@ -288,7 +288,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/t4s7-1.png)
    
-1. Review the files in the **GitHub repository.**
+1. Refresh the **GitHub repository** page, and review the files in the repository.
 
    ![](../../images/t4s8.png)
 
@@ -373,7 +373,7 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
    ![](../../images/t5s8-1.png)
 
-1. Review the files in the **GitHub repository.**
+1. Refresh the **GitHub repository** page, and review the files in the repository.
 
    ![](../../images/t5s8-2.png)
 
