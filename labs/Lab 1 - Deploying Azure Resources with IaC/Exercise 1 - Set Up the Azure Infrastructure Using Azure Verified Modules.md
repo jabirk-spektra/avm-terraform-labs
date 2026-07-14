@@ -275,6 +275,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform plan -out tfplan
    ```
+
    Expected output:
 
    ```
@@ -290,6 +291,8 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform apply tfplan
    ```
+   
+   >**Note:** The command may take a few minutes to complete. Please wait until it finishes before proceeding.
 
    ![](../../images/t2s16.png)
 
