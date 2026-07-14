@@ -1,6 +1,6 @@
 # Exercise 2:  Building a Secure, Private Network Foundation with Azure Verified Modules
 
-### Estimated Duration:
+### Estimated Duration: 90 Minutes
 
 ## 📘 Scenario
 

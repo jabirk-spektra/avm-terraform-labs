@@ -1,6 +1,6 @@
 # Exercise 1: Preparing the Terraform Environment and Deploying the Base Infrastructure with Azure Verified Modules
 
-### Estimated Duration:
+### Estimated Duration: 60 Minutes
 
 ## 📘 Scenario
 

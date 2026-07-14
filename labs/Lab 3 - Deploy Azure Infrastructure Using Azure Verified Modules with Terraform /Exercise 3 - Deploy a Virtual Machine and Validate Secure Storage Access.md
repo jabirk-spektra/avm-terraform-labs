@@ -1,6 +1,6 @@
 # Exercise 3: Deploy a Virtual Machine and Validate Secure Storage Access
 
-### Estimated Duration:
+### Estimated Duration: 90 Minutes
 
 ## 📘 Scenario
 
