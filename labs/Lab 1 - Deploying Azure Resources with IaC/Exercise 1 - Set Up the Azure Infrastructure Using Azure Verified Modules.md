@@ -51,11 +51,11 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-terraform-lab-new-terminal.png)
 
-1. Now you will see another screen Do you trust the authors of the files in this folder?. Click **Trust Folder & Continue**.
+1. Now you will see another screen, Do you trust the authors of the files in this folder?. Click **Trust Folder & Continue**.
 
    ![](../../images/vsc-trust-folder-terraformlabs-01.png)
 
-1. If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**.
+1. If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, and click **Relaunch Terminal**.
 
    ![](../../images/git-n.png)
 
@@ -233,11 +233,11 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
       ![](../../images/t2s9.png)   
 
-1. Navigate to the left side of the Visual Studio, and select **File (1)**, and click on **New File (2)**.
+1. Navigate to the left side of Visual Studio Code, and select **File (1)**, and then click **New File (2)**.
 
    ![](../../images/tf-02.png)
 
-1. In the Search bar, give the name as **terraform.tfvars** and press **Enter**.
+1. In the Search bar, enter the name as **terraform.tfvars** and press **Enter**.
 
    ```
    terraform.tfvars
@@ -249,7 +249,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s12.png)
 
-1. After the file is created, add the following code to it, and save the file `Ctrl + S`.
+1. After the file is created, add the following code to it, and save the file by pressing `Ctrl + S`.
 
       ```hcl
       tags = {

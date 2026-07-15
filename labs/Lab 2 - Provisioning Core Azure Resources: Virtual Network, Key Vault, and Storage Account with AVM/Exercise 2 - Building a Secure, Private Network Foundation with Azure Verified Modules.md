@@ -1,4 +1,4 @@
-# Exercise 2:  Building a Secure, Private Network Foundation with Azure Verified Modules
+# Exercise 2: Building a Secure, Private Network Foundation with Azure Verified Modules
 
 ### Estimated Duration: 90 Minutes
 
@@ -125,7 +125,7 @@ In this task, you will add a Virtual Network and subnets to your Terraform confi
    | `source` | Specifies the Terraform Registry location of the Azure Verified Utility Module (AVM Utility) that Terraform downloads to calculate IP address ranges and subnet prefixes. |
    | `version` | Specifies the version of the utility module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions. |
 
-1. Open the **avm.virtual-network.tf (1)** file and look at each of the properties, paying close attention to the **source and version (2)** properties.
+1. Open the **avm.virtual_network.tf (1)** file and look at each of the properties, paying close attention to the **source and version (2)** properties.
 
    ![](../../images/t3s5.png)
 
@@ -134,7 +134,7 @@ In this task, you will add a Virtual Network and subnets to your Terraform confi
    | `source` | Specifies the Terraform Registry location of the Azure Verified Module (AVM) that Terraform downloads and uses to deploy the Azure Virtual Network. |
    | `version` | Specifies the version of the Azure Verified Module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions. |
 
-1. Examine the diagnostics settings in **locals.tf** and take note that this same setting will be applied to all of the AVM modules in the lab.
+1. Examine the diagnostic settings in **locals.tf** and take note that this same setting will be applied to all of the AVM modules in the lab.
 
    ![](../../images/t3s6.png)
 
@@ -312,7 +312,7 @@ In this part we are going to add a Storage Account to our Terraform configuratio
    
       ![](../../images/t5s1.png)
 
-1. Run to install the AVM module for Storage Account.
+1. Run the following command to install the AVM module for the Storage Account.
 
    ```
    terraform init
@@ -322,7 +322,7 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
      ![](../../images/t5s2.png)
 
-1. Open the **avm.storage-account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
+1. Open the **avm.storage_account.tf (1)** file and look at each of the **properties (2)**, paying close attention to the **managed_identities**, **customer_managed_key** and **containers** variables.
 
    ![](../../images/t5s3.png)
 

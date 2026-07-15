@@ -99,7 +99,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
    ![](../../images/vm-07.png)
 
-1. Select the newly created **Virtual Machine (1)**, and review it's **Properties (2)**.
+1. Select the newly created **Virtual Machine (1)**, and review its **Properties (2)**.
 
    ![](../../images/vm-08.png)
 
@@ -142,7 +142,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
     ![](../../images/vm-1-n.png)
 
-1. Ensure that **SSH (1)** is selected as the Protocol, and then select **SSH Private Key from Azure Key Vault (3)** from the **Authentication Type (2)** drop-down menu.
+1. Ensure that **SSH (1)** is selected as the Protocol, then from the **Authentication Type (2)** drop-down menu, select **SSH Private Key from Azure Key Vault (3).**
    
    ![](../../images/vm-12.png)
 
@@ -162,7 +162,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
       ![](../../images/e2t2s8.png)
 
-   - In the **Settings**  page, click on **Privacy, search, and services (1)**, and then click **Site permissions (2)**.
+   - On the **Settings**  page, click on **Privacy, search, and services (1)**, and then click **Site permissions (2)**.
 
      ![](../../images/e2t2s9.png)
 
@@ -204,7 +204,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
    ![](../../images/vm-15.png)
 
-1. Run to login with the system assigned managed identity.
+1. Run the following command to log in with the system-assigned managed identity.
 
    >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
@@ -216,7 +216,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
 ## Task 4: Upload and Manage Blobs in the Storage Account
 
-We are going to create a blob in the storage account using the Azure CLI form the Azure Bastion SSH terminal.
+We are going to create a blob in the storage account from the Azure Bastion SSH terminal.
 
 1. Run the following command to create a file named hello.txt with the content **"hello world"**. 
 
