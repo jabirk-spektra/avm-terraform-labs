@@ -79,6 +79,10 @@ A User Assigned Managed Identity is used to authenticate the Virtual Machine to 
 - **Terraform Variables** – Used to parameterize infrastructure configurations.
 - **Terraform Modules** – Reusable Terraform configurations used for scalable deployments.
 
+## 📁 Repository Structure
+
+![](.././images/repo-structure.png)
+
 ## 🚀 Getting Started with Lab
 
 Welcome to your Introduction to using Azure Verified Modules for Terraform! We've prepared a seamless environment for you to explore Terraform concepts, deploy Azure infrastructure resources, and gain hands-on experience with modern Infrastructure as Code practices.
