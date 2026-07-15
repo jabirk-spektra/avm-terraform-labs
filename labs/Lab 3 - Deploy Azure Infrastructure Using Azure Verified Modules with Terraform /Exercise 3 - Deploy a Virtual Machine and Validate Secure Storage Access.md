@@ -238,7 +238,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    >**Note**: The storage account name may very.   
 
-1. Run the following command to upload the **hello.txt** file to the storage account. Replace <storage-account-name> with the storage account name that you copied in **Task 4, Step 3.**
+1. Run the following command to upload the **hello.txt** file to the Storage Account. Replace `<storage-account-name>` with the Storage Account name that you copied in **Task 4: Step 3.**
 
    >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
@@ -248,7 +248,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-02.png)
 
-1. Run the following command to list the blobs in the container. Replace <storage-account-name> with the storage account name you copied in **Task 4, Step 3.**
+1. Run the following command to list the blobs in the container. Replace `<storage-account-name>` with the Storage Account name that you copied in **Task 4: Step 3.**
 
    >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
@@ -258,8 +258,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-03.png)
 
-1. Run the following command to download the blob to a new file. Replace <storage-account-name> with the storage account name you copied in **Task 4, Step 3.**
-
+1. Run the following command to download the blob to a new file. Replace `<storage-account-name>` with the Storage Account name that you copied in **Task 4: Step 3.**
    >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
 
    ```

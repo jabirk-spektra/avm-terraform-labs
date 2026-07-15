@@ -278,10 +278,6 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/kv-05.png)
 
-1. Under **Objects**, click **Keys (1)**, and view the **generated key (2).**
-
-   ![](../../images/keys.png)
-
 1. Commit the changes to git: 
 
    ```
@@ -373,6 +369,10 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Under **Data storage**, select **Containers (1)** to view the **demo (2)** container.
 
    ![](../../images/stgacc.png)
+
+1. You can also view the key that is created when the **Storage Account** is deployed and stored in the **Key Vault**. In the Azure portal, navigate to your **Key Vault**, and under **Objects**, click **Keys (1)** to view the **generated key (2).**
+
+   ![](../../images/keys.png)
 
 1. Commit the changes to git:
 
