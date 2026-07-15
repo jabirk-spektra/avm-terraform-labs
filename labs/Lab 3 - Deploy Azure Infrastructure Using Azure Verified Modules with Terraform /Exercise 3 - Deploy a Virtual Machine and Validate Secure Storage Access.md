@@ -27,7 +27,7 @@ In this exercise, you will complete the following tasks:
 
 In this part we are going to add a Virtual Machine to our Terraform configuration by leveraging the Azure Verified Module for Virtual Machine. The Virtual Machine is going to be used to interact with the Storage Account later. We are also going to add a role assignment to the storage module to assign permissions to the managed identity of the virtual machine to the storage container.
 
-1. Copy the files from the **Part 5** folder into the **avm-lab** folder. This will add new files and update existing ones. If prompted, choose to overwrite the existing files while retaining all other files.
+1. Run the following command to copy the files from the **Part 5** folder into the **avm-lab** folder. This will add new files and overwrite the existing files where applicable.
 
       ```pwsh
       copy ../labs/part05-virtual-machine/* .
@@ -138,7 +138,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
     ![](../../images/vm-10.png)
 
-1. On the **Overview (1)** page, click the drop-down arrow next to **Connect (2)**, and then select **Connect via Bastion (3)**.
+1. To connect to the virtual machine using Azure Bastion, on the **Overview (1)** page, click the drop-down arrow next to **Connect (2)**, and then select **Connect via Bastion (3).**
 
     ![](../../images/vm-1-n.png)
 
@@ -232,11 +232,11 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/sa-05.png)
 
-1. Select the **Storage Account (1)**, copy the **Storage Account (2)** name , and save it in Notepad for use in the next steps.
+1. Select the **Storage Account (1)**, copy the **Storage Account (2)** name, and save it in Notepad for use in the next steps.
 
    ![](../../images/sa-06.png)
 
-   >**Note**: The storage account name may very.   
+   >**Note**: The Storage Account name may vary in your environment.  
 
 1. Run the following command to upload the **hello.txt** file to the Storage Account. Replace `<storage-account-name>` with the Storage Account name that you copied in **Task 4: Step 3.**
 
@@ -267,9 +267,10 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-04.png)
 
-1. Run to view the contents of the downloaded file.
+1. Run the following command to view the contents of the downloaded file.
 
    >**Note**: Copy the commands into Notepad within your lab VM, then copy and paste them into the Linux virtual machine connected through Azure Bastion, and run them.
+   
    ```
    cat hello2.txt
    ```
