@@ -103,7 +103,7 @@ In this task, you will prepare the local development environment required for Te
 
 In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm.log_analytics_workspace` module.
 
-> **Important:** Do not clear or close the PowerShell terminal, as doing so may interrupt the Terraform session and affect the remaining lab tasks.
+> **Important:** Do not close the PowerShell terminal, as doing so may interrupt the Terraform session and affect the remaining lab tasks.
 
 The Log Analytics Workspace is used as the target for diagnostic settings for all our other resources. This is where we are sending our logging telemetry.
 
@@ -123,7 +123,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s2.png)
 
-1. Copy the files from the **Part 1** folder into the **avm-lab** folder by running the following command:
+1. Run the following command to copy the files from the **Part 1** folder into the **avm-lab** folder.
 
       ```pwsh
       copy ../labs/part01-base/* .
@@ -320,7 +320,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/lw-02.png)
 
-1. Configure your **Git Author** identity by following the on-screen instructions before proceeding.
+1. Configure your **Git Author** identity by running the following commands.
 
     ```
     git config --global user.name odl-user-<inject key="Deployment-ID" enableCopy="false"/>
@@ -344,7 +344,7 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/github-login.png)
 
-1. Use the copied GitHub repository URL to add the remote repository.
+1. Use the copied **GitHub repository** URL to add the remote repository, or copy and paste the following command into your PowerShell terminal.
 
    ```
    git remote add origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>

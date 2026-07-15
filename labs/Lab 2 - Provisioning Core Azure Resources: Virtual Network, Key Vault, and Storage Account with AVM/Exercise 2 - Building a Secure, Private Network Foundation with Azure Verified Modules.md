@@ -25,7 +25,7 @@ In this exercise, you will complete the following tasks:
 
 ## Task 1: Configure the Virtual Network and Subnets
 
-In this part we are going to add a virtual network and subnets to our Terraform configuration by leveraging the Azure Verified Module for Virtual Network. The Virtual Network is going to be used to provide private connectivity between and to our virtual machine, key vault and storage account.
+In this task, you will add a Virtual Network and subnets to your Terraform configuration using the Azure Verified Module (AVM) for Virtual Network. The Virtual Network provides secure, private connectivity between the virtual machine, Key Vault, and Storage Account.
 
 >IMPORTANT: This lab is incremental, you must not delete any files from the previous lab (especially the `terraform.tfstate` file). You must copy the files from the next lab into the `avm-lab` folder and only replace the existing files when prompted.
 
@@ -38,7 +38,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 | **Region scope** | VNets exist within a single Azure region. |
 | **CIDR Notation** | Specifies IP ranges using slash notation such as `/16` or `/24`. |
 
-1. Copy the files from the **Part 2** folder into the **avm-lab** folder. This will add new files and replace the existing files where applicable.
+1. Run the following command to copy the files from the **Part 2** folder into the **avm-lab** folder. This will add new files and overwrite existing files where applicable.
 
       ```pwsh
       copy ../labs/part02-virtual-network/* .
@@ -176,7 +176,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/vnet-01.png)
 
-1. Select the newly created **Virtual network**.
+1. Select the newly created **Virtual Network** deployed using Terraform.
 
    ![](../../images/vnet-02.png)
 
@@ -214,7 +214,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
-1. Copy the files from the **Part 3** folder into the **avm-lab** folder. When prompted, keep the existing files and choose to overwrite only the files that are being updated.
+1. Run the following command to copy the files from the **Part 3** folder into the **avm-lab** folder.
 
       ```pwsh
       copy ../labs/part03-key-vault/* .
@@ -304,7 +304,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
-1. Copy the files from the **Part 4** folder into the **avm-lab** folder.
+1. Run the following command to copy the files from the **Part 4** folder into the **avm-lab** folder. 
 
       ```pwsh
       copy ../labs/part04-storage-account/* .
