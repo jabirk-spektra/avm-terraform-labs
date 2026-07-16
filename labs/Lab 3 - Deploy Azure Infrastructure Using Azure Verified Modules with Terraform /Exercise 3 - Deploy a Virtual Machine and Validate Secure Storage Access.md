@@ -125,12 +125,13 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
    ![](../../images/e2t1s8-2.png)
 
-<!-- > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
->- If you receive a success message, you can proceed to the next task.
->- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
->- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out. -->
- 
-<!-- <validation step="a8e6bcd3-a343-4d30-ac27-0ba754a1fb5d" /> -->
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   >
+   > - Scroll down and hit the Validate button in the lab guide for the corresponding task. If you receive a success message, you can proceed to the next task.
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+
+   <validation step="a8e6bcd3-a343-4d30-ac27-0ba754a1fb5d" />
 
 ## Task 2: Connect to the Virtual Machine Using Azure Bastion
 

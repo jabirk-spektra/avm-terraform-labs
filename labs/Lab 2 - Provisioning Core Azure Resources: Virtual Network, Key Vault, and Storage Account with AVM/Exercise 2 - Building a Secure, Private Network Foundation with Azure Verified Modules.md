@@ -210,12 +210,13 @@ In this task, you will add a Virtual Network and subnets to your Terraform confi
 
    ![](../../images/github-page.png)
 
-<!-- > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
->- If you receive a success message, you can proceed to the next task.
->- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
->- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out. -->
- 
-<!-- <validation step="114c82cf-568c-4650-b1bc-cee8b149bc72" /> -->
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   >
+   > - Scroll down and hit the Validate button in the lab guide for the corresponding task. If you receive a success message, you can proceed to the next task.
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+
+   <validation step="114c82cf-568c-4650-b1bc-cee8b149bc72" />
 
 ## Task 2: Deploy the Key Vault
 
@@ -307,12 +308,13 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/t4s8.png)
 
-<!-- > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
->- If you receive a success message, you can proceed to the next task.
->- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
->- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out. -->
- 
-<!-- <validation step="5529693a-b361-4be5-8e2b-b03b6e9c5954" /> -->
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   >
+   > - Scroll down and hit the Validate button in the lab guide for the corresponding task. If you receive a success message, you can proceed to the next task.
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
+   
+    <validation step="5529693a-b361-4be5-8e2b-b03b6e9c5954" />
 
 ## Task 3: Deploy the Storage Account
 
@@ -409,12 +411,13 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
    ![](../../images/t5s8-2.png)
 
-<!-- > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
->- If you receive a success message, you can proceed to the next task.
->- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
->- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out. -->
- 
-<!-- <validation step="3d6811ed-72be-4351-9ac8-4fd43867bcae" /> -->
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   >
+   > - Scroll down and hit the Validate button in the lab guide for the corresponding task. If you receive a success message, you can proceed to the next task.
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.    
+
+    <validation step="3d6811ed-72be-4351-9ac8-4fd43867bcae" />
 
 ## 🧾 Summary
 
