@@ -390,12 +390,13 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s28.png)
 
-<!-- > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
->- If you receive a success message, you can proceed to the next task.
->- If not, carefully read the error message and retry the step, following the instructions in the lab guide.
->- If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out. -->
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   
+   > - Scroll down and hit the Validate button in the lab guide for the corresponding task. If you receive a success message, you can proceed to the next task.
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
  
-<!-- <validation step="1c0690c8-43ff-4ae3-9a9c-6bf01cb2fcad" /> -->
+   <validation step="1c0690c8-43ff-4ae3-9a9c-6bf01cb2fcad" />
 
 ## 🧾 Summary
 
