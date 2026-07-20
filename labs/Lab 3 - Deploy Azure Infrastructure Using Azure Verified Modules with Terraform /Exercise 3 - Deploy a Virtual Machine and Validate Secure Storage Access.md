@@ -39,7 +39,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
    ![](../../images/e1t1s2.png)
 
-      >**Note:** You may need to choose a different virtual machine SKU depending on availability in your chosen region.
+      >**Note:** If you encounter an error due to insufficient capacity for the **Standard_B2s** virtual machine size in your selected Azure region, use **Standard_D2s_v3** instead.
 
       ```hcl
       virtual_machine_sku = "Standard_B2s"

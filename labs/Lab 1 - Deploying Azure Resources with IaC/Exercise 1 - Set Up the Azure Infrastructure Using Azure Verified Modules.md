@@ -219,16 +219,10 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
       | **source** | Specifies the Terraform Registry location of the Azure Verified Module (AVM) that Terraform downloads and uses to deploy the Log Analytics Workspace.|
       | **version** | Specifies the version of the AVM module to use, ensuring a consistent and predictable deployment by avoiding unexpected changes from newer module versions.|
 
-1. Create an environment variable to set the location variable:
+1. Create an environment variable to set the Azure location. Replace <azure region> with a valid Azure region of your choice (for example, eastus, centralus, canadaeast, or westus).
 
       ```pwsh
       $env:TF_VAR_location = "<azure region>"
-      ```
-
-1. Replace `<azure region>` with a valid Azure location of your choice (e.g. eastus,centralus,canadaeast,westus).
-
-      ```pwsh
-      $env:TF_VAR_location = "eastus"
       ```
 
       ![](../../images/t2s9.png)   
@@ -270,7 +264,9 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
      ![](../../images/t2s14.png)
 
-1. Run the following command to preview the resources that will be created and generate a Terraform plan file.
+1. Run the following command to preview the resources that will be created and generate a Terraform plan file. 
+
+   >**Note**: If the terminal appears to be unresponsive, press `Ctrl + C` to cancel the command, and then try running it again.
 
    ```
    terraform plan -out tfplan
@@ -340,11 +336,11 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/t2s20.png)
 
-1. Navigate to the **GitHub repository** in your browser. Copy the **GitHub repository URL** from the browser's address bar. You will use this URL to configure the repository in **Visual Studio Code**.
+1. Navigate to your GitHub repository in the browser. You will use the repository URL in the next step to configure the remote repository in **Visual Studio Code.**
 
    ![](../../images/github-login.png)
 
-1. Use the copied **GitHub repository** URL to add the remote repository, or copy and paste the following command into your PowerShell terminal.
+1. Copy and paste the following command into your **PowerShell** terminal to add the **GitHub** repository as the remote repository.
 
    ```
    git remote add origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
